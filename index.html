@@ -173,18 +173,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin: 3em 0;
     }
     
-    .highlight-gallery .gallery-row {
+    .gallery-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1em;
       justify-content: center;
+      gap: 1em;
     }
     
-    .highlight-gallery img {
-      width: 32%;
+    .gallery-item {
+      flex: 1 1 30%;
+      max-width: 30%;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: auto;
       border-radius: 10px;
       object-fit: cover;
     }
+
 
   </style>
 </head>
@@ -221,12 +228,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <section class="highlight-gallery">
-      <div class="gallery-row">
-        <img src="highlight1.jpg" alt="Sexy Pace Running Club Houston group stretching Post">
-        <img src="highlight2.jpg" alt="Sexy Pace Running Club Houston group">
-        <img src="highlight3.jpg" alt="Sexy Pace Running Club Houston group">
-      </div>
-    </section>
+  <div class="gallery-row">
+    <div class="gallery-item">
+      <img src="highlight1.jpg" alt="Post-run smiles">
+    </div>
+    <div class="gallery-item">
+      <img src="highlight2.jpg" alt="Group warmup">
+    </div>
+    <div class="gallery-item">
+      <img src="highlight3.jpg" alt="Post-run celebration">
+    </div>
+  </div>
+</section>
 
 
     <section id="signup">
