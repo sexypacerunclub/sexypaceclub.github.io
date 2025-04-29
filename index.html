@@ -57,7 +57,7 @@
     header, footer { text-align: center; padding: 1.5em; background: #000; color: #fff; font-family: 'Anton', sans-serif; }
     .container { max-width: 700px; margin: 0 auto; padding: 3em 1em; box-sizing: border-box; text-align: center; }
     .cta-btn { display: block; width: 90%; max-width: 600px; margin: 1em auto; background-color: #f4afc3; color: #000; padding: 1em; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 1.2em; letter-spacing: 0.5px; box-sizing: border-box; }
-    .highlight-event-btn { background-color: #39FF14; animation: pulse-glow 2s infinite; color: #000; }
+    .highlight-event-btn { background-color: #39FF14; animation: pulse-glow-green 1.2s infinite; color: #000; }
     .highlight-event-btn:hover { transform: scale(1.05); background-color: #ff9999; box-shadow: 0 0 30px 5px rgba(255, 107, 107, 0.8); transition: all 0.3s ease-in-out; }
     @keyframes pulse-glow-green {
       0% {
@@ -82,6 +82,24 @@
     object-fit: cover;
     border-radius: 10px;
     }
+    .share-buttons a {
+      display: inline-block;
+      background-color: #f4afc3;
+      color: #000;
+      padding: 0.5em 1em;
+      margin: 0.5em;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1em;
+      letter-spacing: 0.5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .share-buttons a:hover {
+      background-color: #ffb6c1;
+    }
+
 
   </style>
 </head>
