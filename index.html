@@ -53,6 +53,38 @@
   </script>
 
   <style>
+        .glow-btn {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 1em 2em;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1em;
+  font-size: 1.1em;
+  animation: pulse-glow 1.5s infinite;
+  box-shadow: 0 0 10px #fff;
+  transition: all 0.3s ease-in-out;
+}
+.glow-btn:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 20px 15px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+    
         body {
           font-family: 'Open Sans', sans-serif;
           margin: 0;
@@ -191,6 +223,18 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7PDQ4V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  <!-- 💫 Saturday Event Glowing Banner -->
+  
+<section style="background: linear-gradient(90deg, #ff66cc, #99ccff, #ccffcc); padding: 2em 1em; text-align: center; position: relative;">
+  <h2 style="color: #000; font-size: 1.5em; margin-bottom: 0.5em; font-weight: 800; letter-spacing: 1px;">
+    🎉 Sexy Pace x Ibiza Sessions – Closing Party This Saturday!
+  </h2>
+  <p style="color: #000; font-weight: 600;">🕘 Run Meet: 9:30 AM · 🚪 Doors: 10 AM · 📍 1803 Pease St, Houston</p>
+  <a href="https://www.eventbrite.com/e/ibiza-sessions-closing-party-bauhaus-houston-tickets-1636590639659" target="_blank" class="glow-btn">
+    RSVP on Eventbrite →
+  </a>
+</section>
+  
 
   <header>
     <img src="sexypace-logo-pink.jpg" alt="Sexy Pace Logo" style="max-width: 120px; margin-bottom: 1em;" />
