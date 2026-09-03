@@ -27,7 +27,19 @@
   <meta name="description" content="Sexy Pace is a free Houston run club with weekly 5K runs every Wednesday at 7PM in Hermann Park. All paces welcome — show up, run your pace, vibe after." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Non-render-blocking font load: browser fetches this at low priority
+       (media="print" doesn't match screen), then swaps it to "all" once
+       loaded via onload. noscript fallback covers JS-disabled visitors.
+       Standard, well-established pattern — was previously a plain
+       render-blocking <link rel="stylesheet">, flagged by Lighthouse as
+       costing ~1.6s on throttled mobile. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <!-- LCP image (hero photo) — fetch it immediately at highest priority,
+       don't wait for the browser to discover it via normal parsing.
+       This was the single biggest lever for the 7.1s mobile LCP score. -->
+  <link rel="preload" as="image" href="group-photo.webp" fetchpriority="high">
   <link rel="icon" type="image/jpeg" href="sexypace-logo-pink.jpg" />
 
   <script type="application/ld+json">
@@ -350,7 +362,7 @@
   <nav class="nav">
     <div class="wrap">
       <a class="nav-brand" href="#top">
-        <img src="sexypace-logo-pink.jpg" alt="Sexy Pace Running Club logo" />
+        <img src="sexypace-logo-pink.jpg" alt="Sexy Pace Running Club logo" width="400" height="396" />
         <span>Sexy Pace</span>
       </a>
       <ul class="nav-links">
@@ -392,7 +404,7 @@
         <p class="signup-note" style="margin-top:0.9rem;">First time or fiftieth — check in so we know you're here.</p>
       </div>
       <div class="hero-photo">
-        <img src="group-photo.webp" alt="Sexy Pace Running Club group photo after a Houston run" />
+        <img src="group-photo.webp" alt="Sexy Pace Running Club group photo after a Houston run" width="2000" height="393" fetchpriority="high" />
       </div>
     </div>
   </header>
@@ -404,7 +416,7 @@
        ============================================================ -->
   <section id="special-event">
     <div class="wrap special-event-grid">
-      <img class="special-event-flyer" src="la-bandera-5k-flyer.webp" alt="La Bandera 5K flyer — Sept 6, 8AM, Houston TX, in collaboration with Las Perras Cafe and SISE Hydration" loading="lazy" />
+      <img class="special-event-flyer" src="la-bandera-5k-flyer.webp" alt="La Bandera 5K flyer — Sept 6, 8AM, Houston TX, in collaboration with Las Perras Cafe and SISE Hydration" width="720" height="900" loading="lazy" />
       <div>
         <span class="eyebrow">Special Event</span>
         <h2>La Bandera 5K</h2>
@@ -442,7 +454,7 @@
 
   <section id="about" class="about">
     <div class="wrap about-grid">
-      <img src="highlight2.webp" alt="Sexy Pace runners warming up before a group run" />
+      <img src="highlight2.webp" alt="Sexy Pace runners warming up before a group run" width="1200" height="800" loading="lazy" />
       <div>
         <span class="eyebrow">About Us</span>
         <h2>Not your average run club</h2>
@@ -487,10 +499,10 @@
         <p>Real runs, real people, zero stock photos.</p>
       </div>
       <div class="gallery-grid">
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="highlight1.webp" alt="Sexy Pace run highlight" /></a>
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="highlight3.webp" alt="Sexy Pace run highlight" /></a>
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="shirt-group-photo.webp" alt="Sexy Pace crew wearing club shirts" /></a>
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="wed_sexy_2.jpg" alt="Sexy Pace weekly run flyer" /></a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="highlight1.webp" alt="Sexy Pace run highlight" width="1200" height="800" loading="lazy" /></a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="highlight3.webp" alt="Sexy Pace run highlight" width="800" height="1200" loading="lazy" /></a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="shirt-group-photo.webp" alt="Sexy Pace crew wearing club shirts" width="800" height="1200" loading="lazy" /></a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="wed_sexy_2.jpg" alt="Sexy Pace weekly run flyer" width="421" height="527" loading="lazy" /></a>
       </div>
       <div class="follow-row">
         <a class="btn btn-ghost" href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener" data-cta="follow_instagram">Follow on Instagram</a>
