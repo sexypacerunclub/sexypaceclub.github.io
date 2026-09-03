@@ -2,9 +2,12 @@
 
 ## Current state
 
-- GTM container: `GTM-NH7PDQ4V`
-- GA4 property: `G-939TEPVZ8S`
-- Both were inherited from the previous agency-managed WordPress site. **Verify you actually have Admin access to both in [Google Tag Manager](https://tagmanager.google.com) and [Google Analytics](https://analytics.google.com) before treating them as source of truth.** If you don't have access, create fresh ones under an account Sexy Pace controls and swap the IDs in `index.html` (search for `GTM-` and `G-9`).
+- GTM container: `GTM-NH7PDQ4V` ("Sexy Pace Website")
+- GA4 property: `G-939TEPVZ8S` ("Sexy Pace Running Club")
+- Both inherited from the previous agency-managed WordPress site. **Access confirmed (2026-09-03)** — Ismael has access to both via the Sexy Pace Gmail. The GTM container's live version had been empty since first publish (04/23/2025) — the agency's analytics setup never actually went live, matching the charter's note that WordPress analytics attempts never worked.
+- **CTA click tracking is now live** (as of 2026-09-03): the `Click - CTA - data-cta present` trigger, `jsv - cta name` variable, and `GA4 - Event - cta_click` tag described below were built, tested in GTM Preview (confirmed `cta_click` fires with the correct `cta_name` on the paired `gtm.click` event — note: link clicks fire both a `gtm.linkClick` and a separate `gtm.click` event for the same interaction; the tag only fires on the latter, which is correct and expected), and published.
+- **GTM now owns all analytics config.** Publishing the CTA tracking tag caused GTM to auto-add its own "Google Tag G-939TEPVZ8S" (the base GA4 pageview config, firing on `Initialization - All Pages`) into the container version. Since the site's `index.html` also had a raw hardcoded `gtag.js` snippet sending pageviews independently, this created a live double-counting bug — removed the hardcoded snippet from the code (see `index.html`'s analytics head comment) so GTM is the single source of truth for both pageviews and CTA clicks.
+- **Still open:** GTM's own Container Diagnostics flagged "add another administrator" — the Sexy Pace Gmail is currently the only admin on this GTM account, the same single-point-of-failure risk noted for the GitHub repo. Worth adding a second admin (Ismael's personal Google account, or Maria) sooner rather than later.
 
 ## What's already wired into the code
 

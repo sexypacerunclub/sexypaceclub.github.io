@@ -4,11 +4,14 @@
   <!-- ============================================================
        ANALYTICS / GOOGLE TAG MANAGER
        Container: GTM-NH7PDQ4V · GA4 property: G-939TEPVZ8S
-       Inherited from the previous agency-managed WordPress site —
-       confirm you actually have admin access to both before relying
-       on them long-term (see ANALYTICS.md at the repo root for the
-       full setup plan, naming convention, and the data-gtm-event
-       attributes already placed on buttons throughout this file).
+       Access confirmed 2026-09-03. GTM owns ALL analytics config now —
+       GA4 pageviews fire via GTM's own "Google Tag G-939TEPVZ8S" (on
+       Initialization - All Pages), CTA clicks via "GA4 - Event -
+       cta_click" (see the data-cta="..." attributes on buttons
+       throughout this file, and ANALYTICS.md at the repo root for the
+       full setup + naming convention). Do NOT add a second, separate
+       gtag.js snippet here — it would double-count every pageview
+       against the one GTM already sends.
        ============================================================ -->
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -46,15 +49,6 @@
     },
     "memberOf": { "@type": "SportsOrganization", "name": "Houston Runners Community" }
   }
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-939TEPVZ8S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-939TEPVZ8S');
   </script>
 
   <style>
