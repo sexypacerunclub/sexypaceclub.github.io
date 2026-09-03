@@ -23,6 +23,7 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `follow_instagram` / `follow_tiktok` / `follow_strava` | Gallery section, footer |
 | `special_event_banner` | Special-event banner (only visible when special event mode is on) |
 | `special_event_rsvp` | Special-event section (only visible when special event mode is on) |
+| `special_event_share` | Special-event section "Share With a Friend" button |
 
 ## Recommended GTM setup
 
@@ -73,6 +74,18 @@ To track a new button later, just add `data-cta="whatever_name"` to it in the HT
 
 - Register `cta_name` as a GA4 custom dimension (Admin → Custom definitions), then build a CTA-click breakdown report (Explore → Free Form)
 - Connect Search Console via GA4 Admin → Product Links, for organic search visibility
+
+### 5. Key events (conversions)
+
+Don't mark the raw `cta_click` event as a key event — it fires for every button (social follows included), so it would dilute the conversion metric into meaninglessness. Instead, create scoped custom events for the specific actions that actually matter, and mark only those as key events:
+
+GA4 Admin → Events → **Create event**:
+- `check_in_conversion` — matching condition: `event_name` equals `cta_click` **and** `cta_name` equals `check_in`
+- `join_crew_conversion` — matching condition: `event_name` equals `cta_click` **and** `cta_name` equals `join_crew`
+
+Then in the regular Events list, toggle **"Mark as key event"** for each of those two. This is pure GA4 configuration — no GTM or code changes needed, since it's just re-labeling data already flowing in.
+
+These two map to the charter's stated funnel (Website → Check-in → Email/SMS relationship). Add more scoped conversions the same way if another specific action (e.g. `special_event_rsvp`) becomes worth tracking as its own conversion later.
 
 ## Why this shape (short version)
 
