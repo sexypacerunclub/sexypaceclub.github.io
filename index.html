@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ============================================================
+       ANALYTICS / GOOGLE TAG MANAGER
+       Container: GTM-NH7PDQ4V · GA4 property: G-939TEPVZ8S
+       Inherited from the previous agency-managed WordPress site —
+       confirm you actually have admin access to both before relying
+       on them long-term (see ANALYTICS.md at the repo root for the
+       full setup plan, naming convention, and the data-gtm-event
+       attributes already placed on buttons throughout this file).
+       ============================================================ -->
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -282,6 +291,36 @@
     footer a { text-decoration: none; }
     footer a:hover { color: var(--pink); }
 
+    /* Special Event Mode — see toggle instructions above <body> */
+    #special-event-banner, #special-event { display: none; }
+    body[data-special-event="on"] #special-event-banner,
+    body[data-special-event="on"] #special-event { display: block; }
+    #special-event-banner {
+      background: linear-gradient(90deg, #FFD84D, #FFB74D);
+      border-bottom: 1px solid var(--line);
+    }
+    .special-banner-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.65rem 1.25rem;
+      color: #1a0f00;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+    .special-banner-pulse { animation: pulse-glow 1.8s infinite; border-radius: 50%; }
+    #special-event {
+      background: var(--panel);
+      border-top: 3px solid #FFD84D;
+      border-bottom: 1px solid var(--line);
+    }
+    .special-event-grid { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 880px) { .special-event-grid { grid-template-columns: 0.85fr 1.15fr; } }
+    .special-event-flyer { border-radius: 18px; border: 1px solid var(--line); width: 100%; }
+    #special-event .eyebrow { color: #FFD84D; }
+
     /* Mobile sticky CTA — thumb zone */
     .sticky-cta {
       position: fixed;
@@ -295,7 +334,21 @@
     @media (min-width: 800px) { .sticky-cta { display: none; } }
   </style>
 </head>
-<body>
+<!-- ============================================================
+     SPECIAL EVENT MODE — for one-off events (fundraisers, holiday
+     runs, fests, etc). Default OFF; everything it controls stays
+     hidden until you turn it on.
+
+     TO TURN ON:
+       1. Change data-special-event="off" to "on" right below.
+       2. Fill in the event details — search this file for
+          "SPECIAL EVENT CONTENT" and edit the title/date/location/
+          description/flyer image/RSVP link there.
+     TO TURN OFF (once the event has passed):
+       Change data-special-event="on" back to "off". Content stays
+       in the file (hidden), ready to reuse or overwrite next time.
+     ============================================================ -->
+<body data-special-event="off">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7PDQ4V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
@@ -312,11 +365,20 @@
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#sponsors">Sponsors</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Join the Crew</a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener" data-cta="join_crew">Join the Crew</a></li>
       </ul>
-      <a class="btn btn-checkin" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener">✅ Check In</a>
+      <a class="btn btn-checkin" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener" data-cta="check_in">✅ Check In</a>
     </div>
   </nav>
+
+  <!-- SPECIAL EVENT BANNER — hidden unless data-special-event="on" above -->
+  <div id="special-event-banner">
+    <a class="wrap special-banner-link" href="#special-event" data-cta="special_event_banner">
+      <span class="special-banner-pulse">🎉</span>
+      <span><strong>Special Event This Sunday</strong> — tap for details</span>
+      <span aria-hidden="true">↓</span>
+    </a>
+  </div>
 
   <header id="top" class="hero">
     <div class="wrap hero-grid">
@@ -330,8 +392,8 @@
           <li>💸 <strong>100% Free</strong></li>
         </ul>
         <div class="hero-ctas">
-          <a class="btn btn-checkin" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener">✅ At the Run? Check In</a>
-          <a class="btn btn-ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">New? Join the Crew</a>
+          <a class="btn btn-checkin" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener" data-cta="check_in">✅ At the Run? Check In</a>
+          <a class="btn btn-ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener" data-cta="join_crew">New? Join the Crew</a>
         </div>
         <p class="signup-note" style="margin-top:0.9rem;">First time or fiftieth — check in so we know you're here.</p>
       </div>
@@ -340,6 +402,24 @@
       </div>
     </div>
   </header>
+
+  <!-- ============================================================
+       SPECIAL EVENT CONTENT — edit everything below for your event,
+       then flip data-special-event="on" on <body> near the top of
+       this file. Hidden by default (see toggle instructions above).
+       ============================================================ -->
+  <section id="special-event">
+    <div class="wrap special-event-grid">
+      <img class="special-event-flyer" src="wed_sexy_2.jpg" alt="EDIT ME: describe the event flyer" />
+      <div>
+        <span class="eyebrow">Special Event</span>
+        <h2>EDIT ME: Event Title</h2>
+        <p class="hero-sub">📅 EDIT ME: Sunday, [date] · [time]<br>📍 EDIT ME: Location</p>
+        <p class="hero-sub">EDIT ME: One or two sentences on what this event is and why people should come.</p>
+        <a class="btn btn-checkin" href="#" target="_blank" rel="noopener" data-cta="special_event_rsvp">EDIT ME: RSVP / Learn More</a>
+      </div>
+    </div>
+  </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
@@ -356,7 +436,7 @@
         <h2>Not your average run club</h2>
         <p>Started with a few friends, a speaker, and way too much energy. Now it's <strong>Houston's flyest weekly run</strong> — DJs, good lighting, better company.</p>
         <p>We run first, vibe after. Bring a friend, bring five, or roll up solo — <strong>every pace is the right pace</strong>, and nobody's getting left behind.</p>
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Join Now</a>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener" data-cta="join_crew">Join Now</a>
       </div>
     </div>
   </section>
@@ -401,9 +481,9 @@
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="wed_sexy_2.jpg" alt="Sexy Pace weekly run flyer" /></a>
       </div>
       <div class="follow-row">
-        <a class="btn btn-ghost" href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener">Follow on Instagram</a>
-        <a class="btn btn-ghost" href="https://www.tiktok.com/@sexypacerunclubhtx/" target="_blank" rel="noopener">Follow on TikTok</a>
-        <a class="btn btn-ghost" href="https://www.strava.com/clubs/1367640" target="_blank" rel="noopener">Join us on Strava</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener" data-cta="follow_instagram">Follow on Instagram</a>
+        <a class="btn btn-ghost" href="https://www.tiktok.com/@sexypacerunclubhtx/" target="_blank" rel="noopener" data-cta="follow_tiktok">Follow on TikTok</a>
+        <a class="btn btn-ghost" href="https://www.strava.com/clubs/1367640" target="_blank" rel="noopener" data-cta="follow_strava">Join us on Strava</a>
       </div>
     </div>
   </section>
@@ -413,7 +493,7 @@
       <span class="eyebrow">Sponsors</span>
       <h2>Backed by the real ones</h2>
       <p>Want your brand in front of Houston's most active Gen Z &amp; millennial run community? Let's talk.</p>
-      <a class="btn btn-primary" href="https://forms.gle/KhkTchVPBew2tynz7" target="_blank" rel="noopener">Become a Sponsor</a>
+      <a class="btn btn-primary" href="https://forms.gle/KhkTchVPBew2tynz7" target="_blank" rel="noopener" data-cta="sponsor">Become a Sponsor</a>
     </div>
   </section>
 
@@ -422,7 +502,7 @@
       <div class="signup-card">
         <h2>Stay in the loop</h2>
         <p>Drop your email (and your number if you want texts) — we'll send run reminders, events, and the occasional meme. No spam, ever.</p>
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Sign Me Up</a>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener" data-cta="join_crew">Sign Me Up</a>
         <p class="signup-note">Opens our Google Form in a new tab — takes 15 seconds.</p>
       </div>
     </div>
@@ -438,12 +518,12 @@
         <div class="contact-card">
           <h3>📬 Questions or collabs</h3>
           <p>Got a question, want to volunteer, or collab? We read everything.</p>
-          <a class="btn btn-primary btn-block" href="https://forms.gle/KhkTchVPBew2tynz7" target="_blank" rel="noopener">Open Contact Form</a>
+          <a class="btn btn-primary btn-block" href="https://forms.gle/KhkTchVPBew2tynz7" target="_blank" rel="noopener" data-cta="contact">Open Contact Form</a>
         </div>
         <div class="contact-card">
           <h3>💬 Tell us how we're doing</h3>
           <p>Help us keep Sexy Pace vibrant and inclusive — tell us what you love or what we can improve.</p>
-          <a class="btn btn-ghost btn-block" href="https://forms.gle/SGHzR58H8v5mtSBb9" target="_blank" rel="noopener">Take the Feedback Survey</a>
+          <a class="btn btn-ghost btn-block" href="https://forms.gle/SGHzR58H8v5mtSBb9" target="_blank" rel="noopener" data-cta="feedback">Take the Feedback Survey</a>
         </div>
       </div>
     </div>
@@ -453,15 +533,15 @@
     <div class="wrap">
       <p>© 2026 Sexy Pace Running Club · Houston, TX · Made with love (and sweat)</p>
       <div class="foot-links">
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@sexypacerunclubhtx/" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.strava.com/clubs/1367640" target="_blank" rel="noopener">Strava</a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener" data-cta="follow_instagram">Instagram</a>
+        <a href="https://www.tiktok.com/@sexypacerunclubhtx/" target="_blank" rel="noopener" data-cta="follow_tiktok">TikTok</a>
+        <a href="https://www.strava.com/clubs/1367640" target="_blank" rel="noopener" data-cta="follow_strava">Strava</a>
       </div>
     </div>
   </footer>
 
   <div class="sticky-cta">
-    <a class="btn btn-checkin btn-block" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener">✅ Check In</a>
+    <a class="btn btn-checkin btn-block" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener" data-cta="check_in">✅ Check In</a>
   </div>
 </body>
 </html>
