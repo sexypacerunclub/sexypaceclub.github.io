@@ -109,6 +109,17 @@
     .btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
     .btn-ghost:hover { border-color: var(--pink); color: var(--pink); }
     .btn-block { width: 100%; }
+    .btn-checkin {
+      background: var(--pink);
+      color: #1a0510;
+      animation: pulse-glow 1.8s infinite;
+    }
+    .btn-checkin:hover { background: var(--pink-hot); transform: translateY(-2px); }
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 0 0 rgba(244,175,195,0.55); }
+      70% { box-shadow: 0 0 0 14px rgba(244,175,195,0); }
+      100% { box-shadow: 0 0 0 0 rgba(244,175,195,0); }
+    }
 
     /* Nav */
     .nav {
@@ -301,8 +312,9 @@
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#sponsors">Sponsors</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Join the Crew</a></li>
       </ul>
-      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Join the Crew</a>
+      <a class="btn btn-checkin" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener">✅ Check In</a>
     </div>
   </nav>
 
@@ -318,9 +330,10 @@
           <li>💸 <strong>100% Free</strong></li>
         </ul>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Join the Crew — It's Free</a>
-          <a class="btn btn-ghost" href="#gallery">See the Vibe</a>
+          <a class="btn btn-checkin" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener">✅ At the Run? Check In</a>
+          <a class="btn btn-ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">New? Join the Crew</a>
         </div>
+        <p class="signup-note" style="margin-top:0.9rem;">First time or fiftieth — check in so we know you're here.</p>
       </div>
       <div class="hero-photo">
         <img src="group-photo.jpg" alt="Sexy Pace Running Club group photo after a Houston run" />
@@ -357,8 +370,8 @@
       <div class="steps">
         <div class="step">
           <span class="step-num">01</span>
-          <h3>Show up</h3>
-          <p>Wednesdays, 7PM, Hermann Park. Free to run — no sign-up needed to show up.</p>
+          <h3>Show up &amp; check in</h3>
+          <p>Wednesdays, 7PM, Hermann Park. Free to run — tap Check In on your phone so we know you're there.</p>
         </div>
         <div class="step">
           <span class="step-num">02</span>
@@ -448,7 +461,7 @@
   </footer>
 
   <div class="sticky-cta">
-    <a class="btn btn-primary btn-block" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener">Join the Crew — It's Free</a>
+    <a class="btn btn-checkin btn-block" href="https://docs.google.com/forms/d/e/1FAIpQLSftIa3VLIiB7gYe5vRL892WaqR6Kdxljt-JnH9zwq8XGTT0mw/viewform" target="_blank" rel="noopener">✅ Check In</a>
   </div>
 </body>
 </html>
