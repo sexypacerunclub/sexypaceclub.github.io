@@ -410,10 +410,28 @@
         <h2>La Bandera 5K</h2>
         <p class="hero-sub">📅 Sunday, Sept 6 · 8:00 AM<br>📍 3401 Harrisburg Blvd Ste J, Houston, TX 77003</p>
         <p class="hero-sub">A community 5K run in collaboration with Las Perras Cafe and SISE Hydration, alongside SHPE Houston Professional, A&amp;M Club, Everyday Hustle, and Heavy Hitters Run Club. Come run with the crew!</p>
-        <a class="btn btn-checkin" href="https://www.eventbrite.com/e/la-bandera-5k-houston-tickets-1998818461826?utm_source=sexypacerunningclub.com&utm_medium=website&utm_campaign=la_bandera_5k&utm_content=special_event_section" target="_blank" rel="noopener" data-cta="special_event_rsvp">RSVP / Learn More</a>
+        <div class="hero-ctas">
+          <a class="btn btn-checkin" href="https://www.eventbrite.com/e/la-bandera-5k-houston-tickets-1998818461826?utm_source=sexypacerunningclub.com&utm_medium=website&utm_campaign=la_bandera_5k&utm_content=special_event_section" target="_blank" rel="noopener" data-cta="special_event_rsvp">RSVP / Learn More</a>
+          <a class="btn btn-ghost" id="special-event-share-btn" href="sms:?body=Come%20run%20La%20Bandera%205K%20with%20Sexy%20Pace%20this%20Sunday%2C%20Sept%206%20at%208AM%20in%20Houston!%20%F0%9F%8F%81%20https%3A%2F%2Fwww.eventbrite.com%2Fe%2Fla-bandera-5k-houston-tickets-1998818461826%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Dla_bandera_5k%26utm_content%3Dshare_button" data-cta="special_event_share">📲 Share With a Friend</a>
+        </div>
       </div>
     </div>
   </section>
+  <script>
+    (function () {
+      var shareBtn = document.getElementById('special-event-share-btn');
+      if (shareBtn && navigator.share) {
+        shareBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          navigator.share({
+            title: 'La Bandera 5K — Sexy Pace Running Club',
+            text: 'Come run La Bandera 5K with Sexy Pace this Sunday, Sept 6 at 8AM in Houston!',
+            url: 'https://www.eventbrite.com/e/la-bandera-5k-houston-tickets-1998818461826?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=la_bandera_5k&utm_content=share_button'
+          }).catch(function () {});
+        });
+      }
+    })();
+  </script>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
