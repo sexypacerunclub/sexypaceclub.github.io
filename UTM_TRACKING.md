@@ -49,6 +49,14 @@ Base URL: `https://sexypacerunningclub.com/`
 https://sexypacerunningclub.com/?utm_source=tiktok&utm_medium=social&utm_campaign=evergreen&utm_content=bio_link
 ```
 
+**Instagram bio link:**
+```
+https://sexypacerunningclub.com/?utm_source=instagram&utm_medium=social&utm_campaign=evergreen&utm_content=bio_link
+```
+For an Instagram Story link specifically (as opposed to the permanent bio
+link), swap `utm_content=bio_link` for `utm_content=story` so the two are
+distinguishable in reports.
+
 **LinkedIn:**
 ```
 https://sexypacerunningclub.com/?utm_source=linkedin&utm_medium=social&utm_campaign=evergreen&utm_content=bio_link
