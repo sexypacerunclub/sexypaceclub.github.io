@@ -62,6 +62,12 @@ distinguishable in reports.
 https://sexypacerunningclub.com/?utm_source=linkedin&utm_medium=social&utm_campaign=evergreen&utm_content=bio_link
 ```
 
+**Strava club page:**
+```
+https://sexypacerunningclub.com/?utm_source=strava&utm_medium=social&utm_campaign=evergreen&utm_content=club_page
+```
+Goes in the Strava club's description field.
+
 **QR code at the park:**
 ```
 https://sexypacerunningclub.com/?utm_source=qr_park&utm_medium=offline&utm_campaign=evergreen&utm_content=park_signage
