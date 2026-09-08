@@ -273,6 +273,17 @@
     .signup-card .btn-primary { background: #1a0510; color: #fff; }
     .signup-card .btn-primary:hover { background: #2c0a1c; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
     .signup-note { font-size: 0.85rem; opacity: 0.7; margin-top: 1rem !important; }
+    .inline-share-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-top: 1rem;
+    }
+    .inline-share-link:hover { color: var(--pink-hot); }
 
     /* Contact */
     .contact-grid { display: grid; gap: 1.25rem; }
@@ -402,6 +413,7 @@
           <a class="btn btn-ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSd6Nxn-bmRdK2NwA_FARF_F3Kb3gqRXmtDQGRa8V18yfsKVeQ/viewform" target="_blank" rel="noopener" data-cta="join_crew">New? Join the Crew</a>
         </div>
         <p class="signup-note" style="margin-top:0.9rem;">First time or fiftieth — check in so we know you're here.</p>
+        <a class="inline-share-link" id="hero-share-btn" href="sms:?body=Run%20with%20me%20at%20Sexy%20Pace%20Running%20Club!%20Every%20Wednesday%2C%207PM%20at%20Hermann%20Park.%20100%25%20free%2C%20all%20paces%20welcome.%20%F0%9F%8F%83%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Devergreen%26utm_content%3Dhero_share_button" data-cta="hero_share">📲 Got an accountability buddy? Share this with them</a>
       </div>
       <div class="hero-photo">
         <img src="hero-photo.webp" alt="Sexy Pace Running Club group photo after a Houston run" width="933" height="1400" fetchpriority="high" />
@@ -430,19 +442,32 @@
     </div>
   </section>
   <script>
-    (function () {
-      var shareBtn = document.getElementById('special-event-share-btn');
-      if (shareBtn && navigator.share) {
-        shareBtn.addEventListener('click', function (e) {
+    // Reusable share-button wiring: the href is always a working sms:
+    // fallback (works with no JS, any browser). Where the Web Share API
+    // is available, upgrade the click to the native OS share sheet
+    // instead — same pattern for every share button on the site, add a
+    // new one by calling wireShareButton() again, no copy-pasted logic.
+    function wireShareButton(buttonId, shareData) {
+      var btn = document.getElementById(buttonId);
+      if (btn && navigator.share) {
+        btn.addEventListener('click', function (e) {
           e.preventDefault();
-          navigator.share({
-            title: 'La Bandera 5K — Sexy Pace Running Club',
-            text: 'Come run La Bandera 5K with Sexy Pace this Sunday, Sept 6 at 8AM in Houston!',
-            url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=la_bandera_5k&utm_content=share_button#special-event'
-          }).catch(function () {});
+          navigator.share(shareData).catch(function () {});
         });
       }
-    })();
+    }
+
+    wireShareButton('hero-share-btn', {
+      title: 'Sexy Pace Running Club',
+      text: 'Run with me at Sexy Pace Running Club! Every Wednesday, 7PM at Hermann Park. 100% free, all paces welcome.',
+      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=evergreen&utm_content=hero_share_button'
+    });
+
+    wireShareButton('special-event-share-btn', {
+      title: 'La Bandera 5K — Sexy Pace Running Club',
+      text: 'Come run La Bandera 5K with Sexy Pace this Sunday, Sept 6 at 8AM in Houston!',
+      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=la_bandera_5k&utm_content=share_button#special-event'
+    });
   </script>
 
   <div class="marquee" aria-hidden="true">
