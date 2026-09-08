@@ -17,6 +17,7 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 |---|---|
 | `check_in` | Nav, hero, mobile sticky bar |
 | `join_crew` | Nav, hero, About, Signup section |
+| `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
 | `sponsor` | Sponsors section |
 | `contact` | Contact section |
 | `feedback` | Contact section (feedback survey) |
