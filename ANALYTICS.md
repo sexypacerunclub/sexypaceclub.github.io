@@ -18,7 +18,8 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `check_in` | Nav, hero, mobile sticky bar |
 | `join_crew` | Nav, hero, About, Signup section |
 | `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
-| `photo_album` | Gallery section "See This Week's Full Album" button — links to a weekly-updated Adobe Lightroom shared album |
+| `photo_album` | Gallery section "This Week's Album" button — links to the current week's Adobe Lightroom shared album |
+| `photo_album_previous` | Gallery section "Last Week's Album" button — links to the prior week's Lightroom shared album, kept one week back |
 | `sponsor` | Sponsors section |
 | `contact` | Contact section |
 | `feedback` | Contact section (feedback survey) |
