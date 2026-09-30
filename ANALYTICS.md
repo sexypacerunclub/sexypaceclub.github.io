@@ -15,7 +15,7 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 
 | `data-cta` value | Where it appears |
 |---|---|
-| `check_in` | Nav, hero, mobile sticky bar |
+| `check_in` | Nav, hero, mobile sticky bar — links to `/checkin/`, a custom check-in page (replaced the Google Form) |
 | `join_crew` | Nav, hero, About, Signup section |
 | `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
 | `photo_album` | Gallery section "This Week's Album" button — links to the current week's Adobe Lightroom shared album |

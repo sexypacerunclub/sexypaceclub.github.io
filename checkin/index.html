@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check In — Sexy Pace Running Club</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="../sexypace-logo-pink.jpg" />
+
+  <!-- ============================================================
+       CHECK-IN WINDOW CONFIG
+       This page only accepts check-ins:
+         Wednesday  5:00 PM – 10:00 PM  (Central Time)
+         Saturday   4:00 AM – 12:00 PM  (Central Time)
+       The check here is just for a fast, friendly message — the
+       REAL enforcement happens server-side in the Apps Script Web
+       App (SCRIPT_URL below), so this can't be bypassed by changing
+       a phone's clock. Keep both copies of the window logic in sync
+       if the schedule ever changes.
+
+       Fields match the original Google Form ("Sexy Pace Run Club
+       Check-In 2026") exactly: Email (required), Name (optional),
+       Email Consent checkbox (required — this is the opt-in basis
+       for adding someone to the Brevo list, keep the wording as-is),
+       First-time radio (required).
+
+       SCRIPT_URL — replace with your deployed Apps Script Web App
+       URL (see apps-script.gs in this folder for setup steps).
+       Until this is filled in, the form will show a setup-needed
+       message instead of submitting.
+       ============================================================ -->
+  <script>
+    window.SCRIPT_URL = "PASTE_YOUR_DEPLOYED_APPS_SCRIPT_WEB_APP_URL_HERE";
+  </script>
+
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --panel: #131313;
+      --line: #262626;
+      --pink: #f4afc3;
+      --pink-hot: #ff6fa5;
+      --text: #f7f4f0;
+      --text-dim: #b8b3ad;
+      --display: 'Anton', sans-serif;
+      --body: 'Space Grotesk', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--ink);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    a { color: var(--pink); }
+    h1 { font-family: var(--display); text-transform: uppercase; margin: 0 0 0.4rem; letter-spacing: 0.5px; font-size: clamp(1.8rem, 6vw, 2.4rem); }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 2.25rem 1.75rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+    }
+    .brand { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; text-decoration: none; color: inherit; }
+    .brand img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+    .brand span { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.5px; }
+    .sub { color: var(--text-dim); margin: 0 0 1.6rem; font-size: 0.98rem; }
+    .field { text-align: left; margin-bottom: 1.1rem; }
+    .field label { display: block; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .field .req { color: var(--pink); }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 0.85em 1em;
+      border-radius: 14px;
+      border: 2px solid var(--line);
+      background: var(--ink);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 1rem;
+    }
+    input[type="text"]:focus, input[type="email"]:focus { outline: none; border-color: var(--pink); }
+    .radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .radio-row, .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      background: var(--ink);
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      padding: 0.75em 0.9em;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .radio-row:has(input:checked), .check-row:has(input:checked) { border-color: var(--pink); }
+    .radio-row input, .check-row input { margin-top: 0.2em; accent-color: var(--pink); flex-shrink: 0; }
+    .check-row { font-size: 0.84rem; color: var(--text-dim); line-height: 1.45; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      width: 100%;
+      padding: 0.95em 1.8em;
+      border-radius: 999px;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 1.02rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      background: var(--pink);
+      color: #1a0510;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      margin-top: 0.4rem;
+    }
+    .btn:hover:not(:disabled) { background: var(--pink-hot); transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .status { margin-top: 1.1rem; font-size: 0.95rem; min-height: 1.3em; }
+    .status.error { color: #ff8fa8; }
+    .status.success { color: #7be8a0; }
+    .closed-box {
+      background: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.4rem;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+    }
+    .closed-box strong { color: var(--text); display: block; margin-bottom: 0.5rem; font-size: 1.05rem; }
+    .back-link { display: inline-block; margin-top: 1.4rem; font-size: 0.9rem; color: var(--text-dim); text-decoration: none; }
+    .back-link:hover { color: var(--pink); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <a class="brand" href="/">
+      <img src="../sexypace-logo-pink.jpg" alt="Sexy Pace Running Club logo" />
+      <span>Sexy Pace</span>
+    </a>
+    <h1>Check In</h1>
+    <p class="sub">Log your run + help us track community milestones 💗</p>
+
+    <form id="checkin-form">
+      <div id="form-area">
+        <div class="field">
+          <label for="email-input">Email <span class="req">*</span></label>
+          <input type="email" id="email-input" required autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="name-input">Name</label>
+          <input type="text" id="name-input" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label>Is this your first time running with Sexy Pace? <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-row">
+              <input type="radio" name="first-time" value="Yes, first time!" required />
+              <span>Yes, first time!</span>
+            </label>
+            <label class="radio-row">
+              <input type="radio" name="first-time" value="No, I've been here before" required />
+              <span>No, I've been here before</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="check-row">
+            <input type="checkbox" id="consent-input" required />
+            <span>I agree to receive occasional emails from Sexy Pace about events, milestones, notifications &amp; updates — and may be entered into occasional giveaways. No purchase necessary. <span class="req">*</span></span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn" id="submit-btn">✅ Check In</button>
+        <div class="status" id="status"></div>
+      </div>
+    </form>
+
+    <div id="closed-area" class="closed-box" style="display:none;">
+      <strong>Check-in isn't open right now.</strong>
+      It opens Wednesdays 5–10PM and Saturdays 4AM–Noon (Houston time) — come back then, or just show up to the run either way!
+    </div>
+
+    <a class="back-link" href="/">← Back to sexypacerunningclub.com</a>
+  </div>
+
+  <script>
+    (function () {
+      function isInWindow(date) {
+        // Central Time day/hour, computed via Intl so it's correct
+        // regardless of the visitor's own timezone/device clock setting.
+        var parts = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/Chicago',
+          weekday: 'long',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false
+        }).formatToParts(date).reduce(function (acc, p) { acc[p.type] = p.value; return acc; }, {});
+
+        var day = parts.weekday;
+        var hour = parseInt(parts.hour, 10) % 24;
+        var minute = parseInt(parts.minute, 10);
+        var t = hour + minute / 60;
+
+        if (day === 'Wednesday' && t >= 17 && t < 22) return true;
+        if (day === 'Saturday' && t >= 4 && t < 12) return true;
+        return false;
+      }
+
+      var form = document.getElementById('checkin-form');
+      var formArea = document.getElementById('form-area');
+      var closedArea = document.getElementById('closed-area');
+      var statusEl = document.getElementById('status');
+      var submitBtn = document.getElementById('submit-btn');
+
+      if (!isInWindow(new Date())) {
+        formArea.style.display = 'none';
+        closedArea.style.display = 'block';
+        return;
+      }
+
+      form.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+
+        var email = document.getElementById('email-input').value.trim();
+        var name = document.getElementById('name-input').value.trim();
+        var firstTimeEl = form.querySelector('input[name="first-time"]:checked');
+        var consent = document.getElementById('consent-input').checked;
+
+        if (!email || !firstTimeEl || !consent) {
+          statusEl.textContent = 'Please fill out the required fields (email, first-time question, and consent checkbox).';
+          statusEl.className = 'status error';
+          return;
+        }
+
+        if (!window.SCRIPT_URL || window.SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
+          statusEl.textContent = 'Check-in isn’t wired up yet — tell Ismael.';
+          statusEl.className = 'status error';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        statusEl.textContent = 'Checking in…';
+        statusEl.className = 'status';
+
+        // No explicit Content-Type header on purpose: keeps this a CORS
+        // "simple request" (no preflight), which Apps Script Web Apps
+        // don't handle. doPost() reads e.postData.contents and parses
+        // the JSON itself.
+        fetch(window.SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            email: email,
+            name: name,
+            firstTime: firstTimeEl.value,
+            consent: consent
+          })
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.status === 'ok') {
+              formArea.innerHTML = '<div class="status success" style="font-size:1.1rem;">🎉 You’re checked in' + (name ? ', ' + name.split(' ')[0] : '') + '! See you out there.</div>';
+            } else if (data.status === 'closed') {
+              formArea.style.display = 'none';
+              closedArea.style.display = 'block';
+            } else {
+              statusEl.textContent = data.message || 'Something went wrong — try again?';
+              statusEl.className = 'status error';
+              submitBtn.disabled = false;
+            }
+          })
+          .catch(function () {
+            statusEl.textContent = 'Network hiccup — try again?';
+            statusEl.className = 'status error';
+            submitBtn.disabled = false;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
