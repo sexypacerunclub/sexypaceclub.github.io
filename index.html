@@ -254,6 +254,40 @@
     .gallery-grid a:hover img { transform: scale(1.06); }
     .follow-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
 
+    /* Photographer credits grid */
+    .photographer-grid { display: grid; gap: 1.25rem; margin: 2rem 0; }
+    @media (min-width: 720px) { .photographer-grid { grid-template-columns: repeat(3, 1fr); } }
+    .photographer-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .photographer-card h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+    .photographer-card .credit { color: var(--text-dim); font-size: 0.88rem; margin: 0 0 1.1rem; }
+    .photographer-card .btn { margin-top: auto; }
+    .photographer-card .btn + .btn { margin-top: 0.6rem; }
+
+    /* Permanent "jump to photos" banner, always visible under the nav */
+    .photos-banner {
+      background: var(--pink);
+      border-bottom: 1px solid var(--line);
+    }
+    .photos-banner-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.65rem 1.25rem;
+      color: #1a0510;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+    .photos-banner-link:hover { background: var(--pink-hot); }
+
     /* Sponsors */
     .sponsors { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .sponsors .wrap { text-align: center; }
@@ -387,6 +421,18 @@
       <a class="btn btn-checkin" href="/checkin/" data-cta="check_in">✅ Check In</a>
     </div>
   </nav>
+
+  <!-- Permanent "jump to photos" banner — always visible, not tied to
+       special-event mode. Mainly for social traffic: a post says "link
+       in bio, tap the photo banner" instead of "scroll down to find
+       the photos." -->
+  <div class="photos-banner">
+    <a class="wrap photos-banner-link" href="#photos" data-cta="photos_banner">
+      <span>📸</span>
+      <span><strong>This Week's Run Photos</strong> — tap to see them</span>
+      <span aria-hidden="true">↓</span>
+    </a>
+  </div>
 
   <!-- SPECIAL EVENT BANNER — hidden unless data-special-event="on" above -->
   <div id="special-event-banner">
@@ -529,9 +575,30 @@
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-3.webp" alt="Sexy Pace crew group photo after a run" width="800" height="1200" loading="lazy" /></a>
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-4-flyer.jpg" alt="Sexy Pace weekly run flyer" width="960" height="1200" loading="lazy" /></a>
       </div>
+      <div id="photos" class="section-head" style="margin-top:2.5rem;">
+        <span class="eyebrow">This Week's Photos</span>
+        <h3 style="font-family:var(--display); text-transform:uppercase; font-size:1.5rem;">Shot by the crew</h3>
+        <p style="color:var(--text-dim); margin-top:0.5rem;">Sept 30 run — three photographers, three angles. Tap a name to see their full set.</p>
+      </div>
+      <div class="photographer-grid">
+        <div class="photographer-card">
+          <h3>📸 Nick</h3>
+          <p class="credit">Full set from 9/30</p>
+          <a class="btn btn-primary" href="https://www.dropbox.com/scl/fo/j9elbu30cab5ekzhjmiib/AO5RSpipwZdHqBDH1QumXIo?rlkey=5cqds7ckvsv6gqh1gi4bdmit6&st=a4lbezon&e=3&dl=0" target="_blank" rel="noopener" data-cta="photo_album_nick">View Nick's Photos</a>
+        </div>
+        <div class="photographer-card">
+          <h3>📸 Johnny</h3>
+          <p class="credit">Full set from 9/30</p>
+          <a class="btn btn-primary" href="https://photos.google.com/share/AF1QipMZ-ag44YR4Ad3g2OPFlzX35bf8MKgwQ5rC-UEFxA3LpClm70A-YliTQtrKZTW0dg?pli=1&key=LUx6ejkyUXFkbEswd2tIWHpROS1PWFFRQ2tnWnVn" target="_blank" rel="noopener" data-cta="photo_album_johnny">View Johnny's Photos</a>
+        </div>
+        <div class="photographer-card">
+          <h3>📸 Jacob</h3>
+          <p class="credit">Our longest-running photographer</p>
+          <a class="btn btn-primary" href="https://lightroom.adobe.com/shares/2f2beb00ba6a46d9bb39edcd1aa21bf0" target="_blank" rel="noopener" data-cta="photo_album">This Week's Set</a>
+          <a class="btn btn-ghost" href="https://lightroom.adobe.com/shares/62e1d97ba17b40b2b4334c2b65eea7fa" target="_blank" rel="noopener" data-cta="photo_album_previous">Last Week's Set</a>
+        </div>
+      </div>
       <div class="follow-row">
-        <a class="btn btn-primary" href="https://lightroom.adobe.com/shares/2f2beb00ba6a46d9bb39edcd1aa21bf0" target="_blank" rel="noopener" data-cta="photo_album">📸 This Week's Album</a>
-        <a class="btn btn-ghost" href="https://lightroom.adobe.com/shares/62e1d97ba17b40b2b4334c2b65eea7fa" target="_blank" rel="noopener" data-cta="photo_album_previous">🗂️ Last Week's Album</a>
         <a class="btn btn-ghost" href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener" data-cta="follow_instagram">Follow on Instagram</a>
         <a class="btn btn-ghost" href="https://www.tiktok.com/@sexypacerunclubhtx/" target="_blank" rel="noopener" data-cta="follow_tiktok">Follow on TikTok</a>
         <a class="btn btn-ghost" href="https://www.strava.com/clubs/1367640" target="_blank" rel="noopener" data-cta="follow_strava">Join us on Strava</a>

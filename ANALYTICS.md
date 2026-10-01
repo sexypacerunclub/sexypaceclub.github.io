@@ -18,8 +18,11 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `check_in` | Nav, hero, mobile sticky bar — links to `/checkin/`, a custom check-in page (replaced the Google Form) |
 | `join_crew` | Nav, hero, About, Signup section |
 | `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
-| `photo_album` | Gallery section "This Week's Album" button — links to the current week's Adobe Lightroom shared album |
-| `photo_album_previous` | Gallery section "Last Week's Album" button — links to the prior week's Lightroom shared album, kept one week back |
+| `photos_banner` | Permanent banner under the nav, links to `#photos` — lets social traffic jump straight to the photo credits section without scrolling |
+| `photo_album` | Gallery section, Jacob's "This Week's Set" button — current week's Adobe Lightroom shared album |
+| `photo_album_previous` | Gallery section, Jacob's "Last Week's Set" button — prior week's Lightroom shared album, kept one week back |
+| `photo_album_nick` | Gallery section, Nick's "View Nick's Photos" button — links to his Dropbox folder for that week's run |
+| `photo_album_johnny` | Gallery section, Johnny's "View Johnny's Photos" button — links to his Google Photos album for that week's run |
 | `sponsor` | Sponsors section |
 | `contact` | Contact section |
 | `feedback` | Contact section (feedback survey) |
