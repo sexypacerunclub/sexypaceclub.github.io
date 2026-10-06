@@ -270,6 +270,28 @@
     .photographer-card .btn { margin-top: auto; }
     .photographer-card .btn + .btn { margin-top: 0.6rem; }
 
+    /* "This week's location" banner — hidden unless data-location-banner="on" on <body> */
+    #location-banner { display: none; }
+    body[data-location-banner="on"] #location-banner { display: block; }
+    #location-banner {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .location-banner-link {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.05rem 0.7rem;
+      padding: 0.7rem 1.25rem;
+      color: #1a0510;
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+    .location-banner-link strong { font-weight: 700; }
+    .location-banner-link span { font-weight: 500; }
+    .location-banner-link:hover { background: #fff; }
+
     /* Permanent "jump to photos" banner, always visible under the nav */
     .photos-banner {
       background: var(--pink);
@@ -421,8 +443,16 @@
 
      CURRENTLY ON for October 2026 (Coffee & Perreo, Sat Oct 31).
      Turn it off after Oct 31.
+
+     LOCATION BANNER — for a week when the Wednesday run is NOT at the
+     usual spot. Same idea as special-event mode, separate switch:
+       ON:  data-location-banner="on" (and edit the venue/date/address
+            in <div id="location-banner"> below the nav).
+       OFF: data-location-banner="off" once the week is over — the markup
+            stays in the file, hidden, ready to edit next time.
+     CURRENTLY ON for Wed Oct 7, 2026 (Christian's Tailgate, White Oak).
      ============================================================ -->
-<body data-special-event="on">
+<body data-special-event="on" data-location-banner="on">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7PDQ4V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
@@ -444,6 +474,17 @@
       <a class="btn btn-checkin" href="/checkin/" data-cta="check_in">✅ Check In</a>
     </div>
   </nav>
+
+  <!-- THIS WEEK'S LOCATION — hidden unless data-location-banner="on" on
+       <body>. Sits first (above the photo/special-event banners) because
+       showing up at the wrong place is the costliest thing a visitor can
+       get wrong. The whole banner links to Google Maps. -->
+  <div id="location-banner">
+    <a class="wrap location-banner-link" href="https://www.google.com/maps/search/?api=1&amp;query=Christian%27s%20Tailgate%202820%20White%20Oak%20Dr%20Houston%20TX" target="_blank" rel="noopener" data-cta="location_banner">
+      <strong>📍 This Wed, Oct 7: Christian's Tailgate</strong>
+      <span>2820 White Oak Dr — not Hermann Park →</span>
+    </a>
+  </div>
 
   <!-- Permanent "jump to photos" banner — always visible, not tied to
        special-event mode. Mainly for social traffic: a post says "link
@@ -616,7 +657,7 @@
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-1.webp" alt="Sexy Pace run highlight" width="800" height="1200" loading="lazy" /></a>
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-2.webp" alt="Sexy Pace run highlight" width="800" height="1200" loading="lazy" /></a>
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-3.webp" alt="Sexy Pace crew group photo after a run" width="800" height="1200" loading="lazy" /></a>
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-4-flyer.jpg" alt="Sexy Pace weekly run flyer" width="960" height="1200" loading="lazy" /></a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-4-flyer.jpg" alt="Sexy Pace Wednesday flyer — October 7 at Christian's Tailgate, 2820 White Oak Dr, with Red Bull, Electrolit and A Force of Nature" width="948" height="1264" loading="lazy" /></a>
       </div>
       <div id="photos" class="section-head" style="margin-top:2.5rem;">
         <span class="eyebrow">This Week's Photos</span>

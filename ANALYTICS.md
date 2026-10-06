@@ -18,6 +18,7 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `check_in` | Nav, hero, mobile sticky bar — links to `/checkin/`, a custom check-in page (replaced the Google Form) |
 | `join_crew` | Nav, hero, About, Signup section |
 | `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
+| `location_banner` | "This week's location" banner at the very top — links to Google Maps for the week's venue (only visible when `data-location-banner="on"`, used when the Wednesday run isn't at the usual spot) |
 | `photos_banner` | Permanent banner under the nav, links to `#photos` — lets social traffic jump straight to the photo credits section without scrolling |
 | `photo_album` | Gallery section, Jacob's "This Week's Set" button — current week's Adobe Lightroom shared album |
 | `photo_album_previous` | Gallery section, Jacob's "Last Week's Set" button — prior week's Lightroom shared album, kept one week back |
