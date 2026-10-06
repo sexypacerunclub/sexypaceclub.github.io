@@ -350,17 +350,21 @@
       background: linear-gradient(90deg, #FFD84D, #FFB74D);
       border-bottom: 1px solid var(--line);
     }
-    .special-banner-link {
+    .special-banner {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      padding: 0.65rem 1.25rem;
+      gap: 0.2rem 1.1rem;
+      padding: 0.6rem 1.25rem;
       color: #1a0f00;
       font-weight: 700;
       font-size: 0.92rem;
-      text-decoration: none;
     }
+    .special-banner a { color: inherit; text-decoration: none; }
+    .special-banner-main { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .special-banner-more { font-weight: 500; opacity: 0.8; }
+    .special-banner-main:hover, .special-banner-more:hover { text-decoration: underline; }
     .special-banner-pulse { animation: pulse-glow 1.8s infinite; border-radius: 50%; }
     #special-event {
       background: var(--panel);
@@ -371,6 +375,22 @@
     @media (min-width: 880px) { .special-event-grid { grid-template-columns: 0.85fr 1.15fr; } }
     .special-event-flyer { border-radius: 18px; border: 1px solid var(--line); width: 100%; }
     #special-event .eyebrow { color: #FFD84D; }
+    .special-events-list { display: grid; gap: 0.9rem; margin: 1.4rem 0; }
+    .special-event-card {
+      background: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem 1rem;
+    }
+    .special-event-card.featured { border-color: #FFD84D; }
+    .special-event-card h3 { font-size: 1.2rem; }
+    .special-event-card p { color: var(--text-dim); font-size: 0.9rem; margin: 0.2rem 0 0; }
+    .special-event-card .btn { padding: 0.75em 1.3em; font-size: 0.95rem; }
 
     /* Mobile sticky CTA — thumb zone */
     .sticky-cta {
@@ -398,8 +418,11 @@
      TO TURN OFF (once the event has passed):
        Change data-special-event="on" back to "off". Content stays
        in the file (hidden), ready to reuse or overwrite next time.
+
+     CURRENTLY ON for October 2026 (Coffee & Perreo, Sat Oct 31).
+     Turn it off after Oct 31.
      ============================================================ -->
-<body data-special-event="off">
+<body data-special-event="on">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7PDQ4V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
@@ -436,11 +459,13 @@
 
   <!-- SPECIAL EVENT BANNER — hidden unless data-special-event="on" above -->
   <div id="special-event-banner">
-    <a class="wrap special-banner-link" href="#special-event" data-cta="special_event_banner">
-      <span class="special-banner-pulse">🎉</span>
-      <span><strong>Special Event This Sunday</strong> — tap for details</span>
-      <span aria-hidden="true">↓</span>
-    </a>
+    <div class="wrap special-banner">
+      <a class="special-banner-main" href="https://sweatpals.com/event/coffee-perreo-hs-x-edh-x-sp" target="_blank" rel="noopener" data-cta="special_event_banner">
+        <span class="special-banner-pulse">🎃</span>
+        <span><strong>Coffee &amp; Perreo · Oct 31</strong> — get tickets →</span>
+      </a>
+      <a class="special-banner-more" href="#special-event" data-cta="special_event_calendar">October calendar ↓</a>
+    </div>
   </div>
 
   <header id="top" class="hero">
@@ -474,15 +499,33 @@
        ============================================================ -->
   <section id="special-event">
     <div class="wrap special-event-grid">
-      <img class="special-event-flyer" src="la-bandera-5k-flyer.webp" alt="La Bandera 5K flyer — Sept 6, 8AM, Houston TX, in collaboration with Las Perras Cafe and SISE Hydration" width="720" height="900" loading="lazy" />
+      <img class="special-event-flyer" src="october-2026-calendar.webp" alt="Sexy Pace Running Club October 2026 calendar: Wednesday runs Oct 7, 14, 21 and 28 (Skechers, Nike and adidas logos on the first three), Saturday long runs Oct 3 and 10, Perreo &amp; Pilates Oct 24, Coffee &amp; Perreo Oct 31" width="1080" height="1080" loading="lazy" />
       <div>
-        <span class="eyebrow">Special Event</span>
-        <h2>La Bandera 5K</h2>
-        <p class="hero-sub">📅 Sunday, Sept 6 · 8:00 AM<br>📍 3401 Harrisburg Blvd Ste J, Houston, TX 77003</p>
-        <p class="hero-sub">A community 5K run in collaboration with Las Perras Cafe and SISE Hydration, alongside SHPE Houston Professional, A&amp;M Club, Everyday Hustle, and Heavy Hitters Run Club. Come run with the crew!</p>
+        <span class="eyebrow">October 2026</span>
+        <h2>Spooky Season at Sexy Pace</h2>
+        <p class="hero-sub">Wednesday runs all month, Saturday long runs on Oct 3 &amp; 10, and two big Saturday events to circle.</p>
+        <div class="special-events-list">
+          <div class="special-event-card featured">
+            <div>
+              <h3>🎃 Coffee &amp; Perreo</h3>
+              <p>Sat, Oct 31 · 10AM–2PM · 1519 Fulton St, Houston</p>
+            </div>
+            <a class="btn btn-checkin" href="https://sweatpals.com/event/coffee-perreo-hs-x-edh-x-sp" target="_blank" rel="noopener" data-cta="special_event_coffee_perreo">Get Tickets</a>
+          </div>
+          <div class="special-event-card">
+            <div>
+              <h3>💃 Perreo &amp; Pilates</h3>
+              <p>Sat, Oct 24 · event page coming soon</p>
+            </div>
+            <!-- PLACEHOLDER: links to the SweatPals host page until the
+                 Oct 24 event page drops. Swap this href for the event URL
+                 (https://sweatpals.com/event/...) once it's live, and change
+                 the button label to "Get Tickets" if it's ticketed. -->
+            <a class="btn btn-ghost" href="https://sweatpals.com/host/PerreoandPilates" target="_blank" rel="noopener" data-cta="special_event_perreo_pilates">See on SweatPals</a>
+          </div>
+        </div>
         <div class="hero-ctas">
-          <a class="btn btn-checkin" href="https://www.eventbrite.com/e/la-bandera-5k-houston-tickets-1998818461826?utm_source=sexypacerunningclub.com&utm_medium=website&utm_campaign=la_bandera_5k&utm_content=special_event_section" target="_blank" rel="noopener" data-cta="special_event_rsvp">RSVP / Learn More</a>
-          <a class="btn btn-ghost" id="special-event-share-btn" href="sms:?body=Come%20run%20La%20Bandera%205K%20with%20Sexy%20Pace%20this%20Sunday%2C%20Sept%206%20at%208AM%20in%20Houston!%20%F0%9F%8F%81%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Dla_bandera_5k%26utm_content%3Dshare_button%23special-event" data-cta="special_event_share">📲 Share With a Friend</a>
+          <a class="btn btn-ghost" id="special-event-share-btn" href="sms:?body=Come%20run%20with%20Sexy%20Pace%20this%20October%21%20%F0%9F%8E%83%20Wednesday%20runs%2C%20Saturday%20long%20runs%20%2B%20Coffee%20%26%20Perreo%20on%20Oct%2031%20%E2%80%94%20see%20the%20calendar%3A%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Doctober_2026%26utm_content%3Dshare_button%23special-event" data-cta="special_event_share">📲 Share With a Friend</a>
         </div>
       </div>
     </div>
@@ -510,9 +553,9 @@
     });
 
     wireShareButton('special-event-share-btn', {
-      title: 'La Bandera 5K — Sexy Pace Running Club',
-      text: 'Come run La Bandera 5K with Sexy Pace this Sunday, Sept 6 at 8AM in Houston!',
-      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=la_bandera_5k&utm_content=share_button#special-event'
+      title: 'October at Sexy Pace Running Club',
+      text: 'Come run with Sexy Pace this October! 🎃 Wednesday runs, Saturday long runs + Coffee & Perreo on Oct 31 — see the calendar:',
+      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=october_2026&utm_content=share_button#special-event'
     });
   </script>
 

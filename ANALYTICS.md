@@ -27,8 +27,10 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `contact` | Contact section |
 | `feedback` | Contact section (feedback survey) |
 | `follow_instagram` / `follow_tiktok` / `follow_strava` | Gallery section, footer |
-| `special_event_banner` | Special-event banner (only visible when special event mode is on) |
-| `special_event_rsvp` | Special-event section (only visible when special event mode is on) |
+| `special_event_banner` | Special-event banner, main link — goes straight to the featured event's ticket page (only visible when special event mode is on) |
+| `special_event_calendar` | Special-event banner, "October calendar ↓" link — jumps to the special-event section (only visible when special event mode is on) |
+| `special_event_coffee_perreo` | Special-event section, "Get Tickets" button for Coffee & Perreo (Oct 31, SweatPals) |
+| `special_event_perreo_pilates` | Special-event section, Perreo & Pilates (Oct 24) button — points at the SweatPals host page until the event page drops, then swap in the event URL |
 | `special_event_share` | Special-event section "Share With a Friend" button |
 
 ## Recommended GTM setup
@@ -91,7 +93,7 @@ GA4 Admin → Events → **Create event**:
 
 Then in the regular Events list, toggle **"Mark as key event"** for each of those two. This is pure GA4 configuration — no GTM or code changes needed, since it's just re-labeling data already flowing in.
 
-These two map to the charter's stated funnel (Website → Check-in → Email/SMS relationship). Add more scoped conversions the same way if another specific action (e.g. `special_event_rsvp`) becomes worth tracking as its own conversion later.
+These two map to the charter's stated funnel (Website → Check-in → Email/SMS relationship). Add more scoped conversions the same way if another specific action (e.g. `special_event_coffee_perreo`) becomes worth tracking as its own conversion later.
 
 ## Why this shape (short version)
 
