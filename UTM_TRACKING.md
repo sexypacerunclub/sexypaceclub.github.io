@@ -95,6 +95,26 @@ person, same campaign, different content type, so you can also see which
 event's campaign name (e.g. `la_bandera_5k`) in any of the templates above
 when promoting that specific event instead of the club generally.
 
+## Outbound links — event pages on other sites (SweatPals, Eventbrite, etc.)
+
+When the *site* sends people to an event page hosted elsewhere, tag that
+link too, so the host can see in their own analytics how many ticket clicks
+came from sexypacerunningclub.com. Same four parameters, same naming rules:
+
+```
+?utm_source=sexypacerunningclub.com&utm_medium=website&utm_campaign=<campaign>&utm_content=<placement>
+```
+
+- `utm_campaign` = the campaign the event belongs to (e.g. `october_2026`)
+- `utm_content` = the placement — we reuse the link's `data-cta` value
+  (e.g. `special_event_banner`, `special_event_perreo_pilates`), so the
+  same string identifies a click in GA4 here and in the host's report
+- In HTML attributes write `&amp;` between parameters
+- Don't copy SweatPals' own tracking params (`sourceCollection`,
+  `impressionId`, `utm_source=sweatpals_web`, …) out of an address bar —
+  those describe a click *inside* SweatPals, not ours. Use the clean event
+  URL (`https://sweatpals.com/event/<slug>/<date>`) plus the tags above.
+
 ## QR code generation
 
 Since GA4 does the actual tracking (via the UTM parameters baked into the
