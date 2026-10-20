@@ -450,11 +450,13 @@
             in <div id="location-banner"> below the nav).
        OFF: data-location-banner="off" once the week is over — the markup
             stays in the file, hidden, ready to edit next time.
-     CURRENTLY OFF. Last used for Wed Oct 7, 2026 (Christian's Tailgate,
-     White Oak) — the banner copy below is still that week's, so edit the
-     venue/date/address before turning it back on.
+     CURRENTLY ON for Wed Oct 21, 2026 (Fleet Feet Woodway). The banner
+     hides itself after its data-expires time (end of Oct 21, Central), so
+     it can't go stale — update data-expires along with the copy whenever
+     you reuse it; still flip this back to "off" afterwards to tidy up.
+     (Previous weeks: Oct 7 = Christian's Tailgate, White Oak.)
      ============================================================ -->
-<body data-special-event="on" data-location-banner="off">
+<body data-special-event="on" data-location-banner="on">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7PDQ4V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
@@ -481,12 +483,22 @@
        <body>. Sits first (above the photo/special-event banners) because
        showing up at the wrong place is the costliest thing a visitor can
        get wrong. The whole banner links to Google Maps. -->
-  <div id="location-banner">
-    <a class="wrap location-banner-link" href="https://www.google.com/maps/search/?api=1&amp;query=Christian%27s%20Tailgate%202820%20White%20Oak%20Dr%20Houston%20TX" target="_blank" rel="noopener" data-cta="location_banner">
-      <strong>📍 This Wed, Oct 7: Christian's Tailgate</strong>
-      <span>2820 White Oak Dr — not Hermann Park →</span>
+  <div id="location-banner" data-expires="2026-10-22T00:00:00-05:00">
+    <a class="wrap location-banner-link" href="https://www.google.com/maps/search/?api=1&amp;query=Fleet%20Feet%20Woodway%206590%20Woodway%20Dr%20Houston%20TX%2077057" target="_blank" rel="noopener" data-cta="location_banner">
+      <strong>📍 This Wed, Oct 21: Fleet Feet Woodway</strong>
+      <span>Early miles 6:30 · Meet up 7:00 · Start 7:30</span>
+      <span>6590 Woodway Dr — not Hermann Park →</span>
     </a>
   </div>
+  <script>
+    // Self-expiring: a dated banner must never outlive its date (the Oct 7
+    // one stayed up 12 days past it). Hides itself after data-expires.
+    (function () {
+      var b = document.getElementById('location-banner');
+      var t = b && Date.parse(b.getAttribute('data-expires'));
+      if (t && Date.now() > t) b.remove();
+    })();
+  </script>
 
   <!-- Permanent "jump to photos" banner — always visible, not tied to
        special-event mode. Mainly for social traffic: a post says "link
@@ -655,7 +667,7 @@
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-1.webp" alt="Sexy Pace run highlight" width="800" height="1200" loading="lazy" /></a>
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-2.webp" alt="Sexy Pace run highlight" width="800" height="1200" loading="lazy" /></a>
         <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-3.webp" alt="Sexy Pace crew group photo after a run" width="800" height="1200" loading="lazy" /></a>
-        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-4-flyer.jpg" alt="Sexy Pace Wednesday flyer — October 7 at Christian's Tailgate, 2820 White Oak Dr, with Red Bull, Electrolit and A Force of Nature" width="948" height="1264" loading="lazy" /></a>
+        <a href="https://www.instagram.com/sexypacerunningclub_/" target="_blank" rel="noopener"><img src="gallery-4-flyer.jpg" alt="Sexy Pace flyer — Wednesday Oct 21 at Fleet Feet Woodway: early miles 6:30pm, meet up 7:00pm, regular start 7:30pm, adidas shoe demo and C4" width="960" height="1280" loading="lazy" /></a>
       </div>
       <div id="photos" class="section-head" style="margin-top:2.5rem;">
         <span class="eyebrow">This Week's Photos</span>
