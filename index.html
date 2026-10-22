@@ -413,6 +413,21 @@
     .special-event-card h3 { font-size: 1.2rem; }
     .special-event-card p { color: var(--text-dim); font-size: 0.9rem; margin: 0.2rem 0 0; }
     .special-event-card .btn { padding: 0.75em 1.3em; font-size: 0.95rem; }
+    /* Card with more than one thing to sign up for (e.g. free run RSVP vs paid class) */
+    .special-event-card.multi { display: grid; gap: 0.9rem; }
+    .special-event-card.multi .card-head p { margin-top: 0.2rem; }
+    .event-option {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+    .event-option strong { display: block; font-size: 0.98rem; }
+    .event-option .opt-note { display: block; color: var(--text-dim); font-size: 0.88rem; margin-top: 0.15rem; }
+    .event-option .free { color: #7be8a0; }
 
     /* Mobile sticky CTA — thumb zone */
     .sticky-cta {
@@ -567,12 +582,25 @@
             </div>
             <a class="btn btn-checkin" href="https://sweatpals.com/event/coffee-perreo-hs-x-edh-x-sp?utm_source=sexypacerunningclub.com&amp;utm_medium=website&amp;utm_campaign=october_2026&amp;utm_content=special_event_coffee_perreo" target="_blank" rel="noopener" data-cta="special_event_coffee_perreo">Get Tickets</a>
           </div>
-          <div class="special-event-card">
-            <div>
+          <div class="special-event-card multi">
+            <div class="card-head">
               <h3>💃 Perreo &amp; Pilates</h3>
-              <p>Corre y Core — shakeout run + Pilates<br>Sat, Oct 24 · 8:30AM · 901 Commerce St, Houston</p>
+              <p>Corre y Core · Sat, Oct 24 · Conejo Malo, 901 Commerce St, Houston</p>
             </div>
-            <a class="btn btn-primary" href="https://sweatpals.com/event/corre-y-core-spooky-season/2026-10-24?utm_source=sexypacerunningclub.com&amp;utm_medium=website&amp;utm_campaign=october_2026&amp;utm_content=special_event_perreo_pilates" target="_blank" rel="noopener" data-cta="special_event_perreo_pilates">Get Tickets</a>
+            <div class="event-option">
+              <div>
+                <strong>🏃 Shakeout run with Sexy Pace — <span class="free">FREE</span></strong>
+                <span class="opt-note">10–11AM (check-in 9:30) · just RSVP on Eventbrite</span>
+              </div>
+              <a class="btn btn-checkin" href="https://www.eventbrite.ca/e/corre-y-core-a-spooky-season-shakeout-and-pilates-tickets-2003102235709?utm_source=sexypacerunningclub.com&amp;utm_medium=website&amp;utm_campaign=october_2026&amp;utm_content=special_event_perreo_pilates_run" target="_blank" rel="noopener" data-cta="special_event_perreo_pilates_run">RSVP to Run (Free)</a>
+            </div>
+            <div class="event-option">
+              <div>
+                <strong>🧘 Pilates flow — limited spots, paid ticket</strong>
+                <span class="opt-note">8:30–9:30AM · separate ticket on SweatPals</span>
+              </div>
+              <a class="btn btn-ghost" href="https://sweatpals.com/event/corre-y-core-spooky-season/2026-10-24?utm_source=sexypacerunningclub.com&amp;utm_medium=website&amp;utm_campaign=october_2026&amp;utm_content=special_event_perreo_pilates" target="_blank" rel="noopener" data-cta="special_event_perreo_pilates">Get Pilates Ticket</a>
+            </div>
           </div>
         </div>
         <div class="hero-ctas">
