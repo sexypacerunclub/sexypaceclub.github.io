@@ -23,7 +23,8 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `photo_album` | Gallery section, Jacob's "This Week's Set" button — current week's Adobe Lightroom shared album |
 | `photo_album_previous` | Gallery section, Jacob's "Last Week's Set" button — prior week's Lightroom shared album, kept one week back |
 | `photo_album_nick` | Gallery section, Nick's "View Nick's Photos" button — links to his Dropbox folder for that week's run |
-| `photo_album_johnny` | Gallery section, Johnny's "View Johnny's Photos" button — links to his Google Photos album for that week's run |
+| `photo_album_johnny` | Gallery section, Johnny's "View Johnny's Latest Photos" button — his most recent Google Photos album |
+| `photo_album_johnny_previous` | Gallery section, Johnny's "Previous Set" button — the album before his latest (same pattern as Jacob's This Week / Last Week) |
 | `sponsor` | Sponsors section |
 | `contact` | Contact section |
 | `feedback` | Contact section (feedback survey) |
