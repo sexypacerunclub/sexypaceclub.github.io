@@ -32,8 +32,6 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `special_event_banner` | Special-event banner, main link — goes straight to the featured event's ticket page (only visible when special event mode is on) |
 | `special_event_calendar` | Special-event banner, "October calendar ↓" link — jumps to the special-event section (only visible when special event mode is on) |
 | `special_event_coffee_perreo` | Special-event section, "Get Tickets" button for Coffee & Perreo (Oct 31, SweatPals) |
-| `special_event_perreo_pilates` | Special-event section, Perreo & Pilates "Corre y Core" (Oct 24) — the **paid, limited Pilates** ticket button (SweatPals) |
-| `special_event_perreo_pilates_run` | Special-event section, same card — the **free shakeout run RSVP** button (Eventbrite) |
 | `special_event_share` | Special-event section "Share With a Friend" button |
 
 ## Recommended GTM setup
