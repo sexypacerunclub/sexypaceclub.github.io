@@ -107,8 +107,8 @@ came from sexypacerunningclub.com. Same four parameters, same naming rules:
 
 - `utm_campaign` = the campaign the event belongs to (e.g. `october_2026`)
 - `utm_content` = the placement — we reuse the link's `data-cta` value
-  (e.g. `special_event_banner`, `special_event_perreo_pilates`), so the
-  same string identifies a click in GA4 here and in the host's report
+  (e.g. `special_event_banner` for a top-banner link), so the same
+  string identifies a click in GA4 here and in the host's report
 - In HTML attributes write `&amp;` between parameters
 - Don't copy SweatPals' own tracking params (`sourceCollection`,
   `impressionId`, `utm_source=sweatpals_web`, …) out of an address bar —
