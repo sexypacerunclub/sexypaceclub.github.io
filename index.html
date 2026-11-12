@@ -296,6 +296,30 @@
     #location-banner.fall .location-banner-link { color: #fbf3df; }
     #location-banner.fall .location-banner-link:hover { background: rgba(0,0,0,0.12); }
 
+    /* Simulation Run (Sat Nov 14) — palette from the flyer: forest green #2a483c + cream #eae4d8 */
+    #simrun-banner { display: block; background: #2a483c; border-bottom: 1px solid #14281f; }
+    .simrun-banner-link { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.05rem 0.7rem; padding: 0.6rem 1.25rem; color: #eae4d8; font-size: 0.92rem; text-decoration: none; }
+    .simrun-banner-link strong { font-weight: 700; }
+    .simrun-banner-link span { font-weight: 500; }
+    .simrun-banner-link:hover { background: rgba(0,0,0,0.18); }
+    #simulation-run { background: linear-gradient(160deg, #234235 0%, #142a22 100%); color: #eae4d8; border-top: 4px solid #3f7a62; border-bottom: 1px solid #0d1b16; }
+    .sr-grid { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 880px) { .sr-grid { grid-template-columns: 0.8fr 1.2fr; } }
+    .sr-flyer { order: 2; width: 100%; max-width: 440px; margin: 0 auto; border-radius: 18px; border: 1px solid #3a5a4b; box-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+    @media (min-width: 880px) { .sr-flyer { order: 0; } }
+    #simulation-run .eyebrow { color: #9fc9b2; }
+    #simulation-run h2 { color: #eae4d8; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1; }
+    .sr-sub { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.5px; color: #9fc9b2; font-size: 1.15rem; margin: 0.45rem 0 0; }
+    .sr-tag { font-size: 1.08rem; margin: 0.9rem 0 0.9rem; color: #cfd9cf; }
+    .sr-format { margin: 0 0 1.2rem; padding: 0.85rem 1rem; border-left: 4px solid #3f7a62; background: rgba(0,0,0,0.22); border-radius: 0 12px 12px 0; font-weight: 700; font-size: 1.02rem; }
+    .sr-format small { display: block; margin-top: 0.35rem; font-weight: 500; font-size: 0.9rem; color: #cfd9cf; }
+    .sr-facts { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 0.45rem; font-size: 1.02rem; font-weight: 700; }
+    .sr-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    #simulation-run .btn-primary { background: #eae4d8; color: #14281f; }
+    #simulation-run .btn-primary:hover { background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+    #simulation-run .btn-ghost { color: #eae4d8; border-color: #6d9884; }
+    #simulation-run .btn-ghost:hover { background: #eae4d8; color: #14281f; border-color: #eae4d8; }
+
     /* Friendsgiving (Wed Nov 18) — palette lifted from the flyer: cream + burnt orange */
     #friendsgiving { background: #f8f0d8; color: #c83000; border-top: 4px solid #c83000; border-bottom: 1px solid #e7d9b4; }
     .fg-grid { display: grid; gap: 2rem; align-items: center; }
@@ -460,6 +484,18 @@
     (function (s) { var e = s.previousElementSibling, t = e && Date.parse(e.getAttribute('data-expires')); if (t && Date.now() > t) e.remove(); })(document.currentScript);
   </script>
 
+  <!-- SIMULATION RUN banner — Sat Nov 14. Dated: hides itself after data-expires.
+       Delete it from the file afterwards (client-side removal leaves the text in the source). -->
+  <div id="simrun-banner" data-expires="2026-11-15T00:00:00-06:00">
+    <a class="wrap simrun-banner-link" href="#simulation-run" data-cta="simulation_run_banner">
+      <strong>🏃 This Sat, Nov 14: Simulation Run</strong>
+      <span>Memorial Park · details ↓</span>
+    </a>
+  </div>
+  <script>
+    (function (s) { var e = s.previousElementSibling, t = e && Date.parse(e.getAttribute('data-expires')); if (t && Date.now() > t) e.remove(); })(document.currentScript);
+  </script>
+
   <!-- Permanent "jump to photos" banner — always visible. Mainly for
        social traffic: a post says "link in bio, tap the photo banner"
        instead of "scroll down to find the photos." -->
@@ -494,6 +530,39 @@
       </div>
     </div>
   </header>
+
+  <!-- ============================================================
+       SIMULATION RUN — Sat Nov 14, 2026 (Memorial Park, by the tennis courts).
+       Dated: hides itself after data-expires; delete it from the file
+       afterwards. Palette is the flyer's (forest green + cream). The Maps
+       link uses the place name, not a street address — listings disagree on
+       the tennis center's street number, and the flyer doesn't give one.
+       ============================================================ -->
+  <section id="simulation-run" data-expires="2026-11-15T00:00:00-06:00">
+    <div class="wrap sr-grid">
+      <img class="sr-flyer" src="simulation-run-2026-flyer.webp" alt="Flyer: Run Beyond The Ordinary — Simulation Run, November 14, 2026. 4.2 miles every hour on the hour until you're the last one standing, to help Jazz train for the Longhorn Last Stand. Memorial Park by the tennis courts, arrival 5:30pm, takeoff 6pm, 8 to 10 loops, bring your own fuel and water." width="900" height="1165" loading="lazy" />
+      <div>
+        <span class="eyebrow">Saturday, Nov 14</span>
+        <h2>Simulation Run</h2>
+        <p class="sr-sub">Run Beyond The Ordinary</p>
+        <p class="sr-tag">Escape the pavement. Embrace the adventure.</p>
+        <p class="sr-format">4.2 miles. Every hour, on the hour. Keep going until you're the last one standing.<small>Let's help Jazz train for the Longhorn Last Stand.</small></p>
+        <ul class="sr-facts">
+          <li>📍 Memorial Park, by the tennis courts</li>
+          <li>🕠 Arrive 5:30PM · Takeoff 6PM</li>
+          <li>🔁 8–10 loops</li>
+          <li>🎒 Bring your own fuel, water, etc.</li>
+        </ul>
+        <div class="sr-actions">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Memorial%20Park%20Tennis%20Center%20Houston%20TX" target="_blank" rel="noopener" data-cta="simulation_run_directions">Get Directions</a>
+          <a class="btn btn-ghost" id="simulation-run-share-btn" href="sms:?body=Simulation%20Run%20with%20Sexy%20Pace%21%20%F0%9F%8F%83%20Sat%20Nov%2014%20at%20Memorial%20Park%20%28by%20the%20tennis%20courts%29%20%E2%80%94%204.2%20miles%20every%20hour%20on%20the%20hour%20until%20one%20runner%20is%20left%20standing.%20Arrive%205%3A30%2C%20takeoff%206PM.%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Dsimulation_run_2026%26utm_content%3Dshare_button%23simulation-run" data-cta="simulation_run_share">📲 Share With a Friend</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function (s) { var e = s.previousElementSibling, t = e && Date.parse(e.getAttribute('data-expires')); if (t && Date.now() > t) e.remove(); })(document.currentScript);
+  </script>
 
   <!-- ============================================================
        FRIENDSGIVING — Wed Nov 18, 2026. Dated: hides itself after its
@@ -546,6 +615,12 @@
         });
       }
     }
+
+    wireShareButton('simulation-run-share-btn', {
+      title: 'Simulation Run — Sexy Pace Running Club',
+      text: 'Simulation Run with Sexy Pace! 🏃 Sat Nov 14 at Memorial Park (by the tennis courts) — 4.2 miles every hour on the hour until one runner is left standing. Arrive 5:30, takeoff 6PM.',
+      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=simulation_run_2026&utm_content=share_button#simulation-run'
+    });
 
     wireShareButton('friendsgiving-share-btn', {
       title: 'A Sexy Pace Friendsgiving',

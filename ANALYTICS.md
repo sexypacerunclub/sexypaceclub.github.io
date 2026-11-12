@@ -19,6 +19,9 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `join_crew` | Nav, hero, About, Signup section |
 | `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
 | `location_banner` | "This week's location" banner at the very top — links to Google Maps for the week's venue (only visible when `data-location-banner="on"`, used when the Wednesday run isn't at the usual spot) |
+| `simulation_run_banner` | Top banner for the Sat Nov 14 Simulation Run — jumps to its section (self-hides after Nov 14) |
+| `simulation_run_directions` | Simulation Run section "Get Directions" button — Google Maps (Memorial Park Tennis Center search) |
+| `simulation_run_share` | Simulation Run section "Share With a Friend" button (UTM campaign `simulation_run_2026`) |
 | `friendsgiving_directions` | Friendsgiving section (Wed Nov 18, The Kennedy) "Get Directions" button — Google Maps (only on the page until Nov 18) |
 | `friendsgiving_share` | Friendsgiving section "Share With a Friend" button (UTM campaign `friendsgiving_2026`) |
 | `photos_banner` | Permanent banner under the nav, links to `#photos` — lets social traffic jump straight to the photo credits section without scrolling |
