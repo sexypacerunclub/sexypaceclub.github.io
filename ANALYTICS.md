@@ -20,8 +20,8 @@ Every meaningful call-to-action on the site carries a `data-cta="..."` attribute
 | `hero_share` | Hero section "Share this with them" link — evergreen invite-a-friend/accountability-buddy share |
 | `location_banner` | "This week's location" banner at the very top — links to Google Maps for the week's venue (only visible when `data-location-banner="on"`, used when the Wednesday run isn't at the usual spot) |
 | `photos_banner` | Permanent banner under the nav, links to `#photos` — lets social traffic jump straight to the photo credits section without scrolling |
-| `photo_album` | Gallery section, Jacob's "This Week's Set" button — current week's Adobe Lightroom shared album |
-| `photo_album_previous` | Gallery section, Jacob's "Last Week's Set" button — prior week's Lightroom shared album, kept one week back |
+| `photo_album` | Gallery section, Jacob's "View Jacob's Latest Photos" button — his most recent album (was an Adobe Lightroom share; now Google Photos) |
+| `photo_album_previous` | Gallery section, Jacob's "Previous Set" button — the album before his latest (same pattern as Johnny's) |
 | `photo_album_nick` | Gallery section, Nick's "View Nick's Photos" button — links to his Dropbox folder for that week's run |
 | `photo_album_johnny` | Gallery section, Johnny's "View Johnny's Latest Photos" button — his most recent Google Photos album |
 | `photo_album_johnny_previous` | Gallery section, Johnny's "Previous Set" button — the album before his latest (same pattern as Jacob's This Week / Last Week) |
