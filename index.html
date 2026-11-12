@@ -291,6 +291,32 @@
     .location-banner-link strong { font-weight: 700; }
     .location-banner-link span { font-weight: 500; }
     .location-banner-link:hover { background: #fff; }
+    /* Optional seasonal variant: add class="fall" to #location-banner */
+    #location-banner.fall { background: linear-gradient(90deg, #b52d00, #c8400a); border-bottom-color: #7a1f00; }
+    #location-banner.fall .location-banner-link { color: #fbf3df; }
+    #location-banner.fall .location-banner-link:hover { background: rgba(0,0,0,0.12); }
+
+    /* Friendsgiving (Wed Nov 18) — palette lifted from the flyer: cream + burnt orange */
+    #friendsgiving { background: #f8f0d8; color: #c83000; border-top: 4px solid #c83000; border-bottom: 1px solid #e7d9b4; }
+    .fg-grid { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 880px) { .fg-grid { grid-template-columns: 0.8fr 1.2fr; } }
+    .fg-flyer { order: 2; width: 100%; max-width: 440px; margin: 0 auto; border-radius: 18px; border: 1px solid #e0cf9f; box-shadow: 0 10px 30px rgba(120,40,0,0.18); }
+    @media (min-width: 880px) { .fg-flyer { order: 0; } }
+    #friendsgiving .eyebrow { color: #c83000; }
+    #friendsgiving h2 { color: #c83000; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1; }
+    .fg-tag { font-size: 1.12rem; margin: 0.9rem 0 1.2rem; max-width: 46ch; color: #8a2a08; }
+    .fg-facts { list-style: none; margin: 0 0 1.3rem; padding: 0; display: grid; gap: 0.45rem; font-size: 1.02rem; font-weight: 700; }
+    .fg-facts li small { display: block; font-weight: 500; font-size: 0.88rem; opacity: 0.85; }
+    .fg-dress { margin: 0 0 1.5rem; }
+    .fg-dress strong { display: block; margin-bottom: 0.5rem; font-size: 1.02rem; }
+    .fg-swatches { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .fg-swatch { display: inline-flex; align-items: center; gap: 0.45rem; background: #fffaf0; border: 1px solid #e0cf9f; border-radius: 999px; padding: 0.35em 0.85em 0.35em 0.5em; font-size: 0.88rem; font-weight: 700; color: #5a2a10; }
+    .fg-swatch i { width: 1.05rem; height: 1.05rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.18); display: inline-block; }
+    .fg-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    #friendsgiving .btn-primary { background: #c83000; color: #fbf3df; }
+    #friendsgiving .btn-primary:hover { background: #a82600; box-shadow: 0 8px 24px rgba(200,48,0,0.3); }
+    #friendsgiving .btn-ghost { color: #c83000; border-color: #c83000; }
+    #friendsgiving .btn-ghost:hover { background: #c83000; color: #fbf3df; }
 
     /* Permanent "jump to photos" banner, always visible under the nav */
     .photos-banner {
@@ -384,11 +410,14 @@
             in <div id="location-banner"> below the nav).
        OFF: data-location-banner="off" once the week is over — the markup
             stays in the file, hidden, ready to edit next time.
-     CURRENTLY ON for Wed Oct 21, 2026 (Fleet Feet Woodway). The banner
-     hides itself after its data-expires time (end of Oct 21, Central), so
-     it can't go stale — update data-expires along with the copy whenever
-     you reuse it; still flip this back to "off" afterwards to tidy up.
-     (Previous weeks: Oct 7 = Christian's Tailgate, White Oak.)
+     CURRENTLY ON for Wed Nov 18, 2026 (Friendsgiving at The Kennedy, with
+     class="fall" for the seasonal colors). Dated elements (this banner and
+     the #friendsgiving section) hide themselves after their data-expires
+     time (end of Nov 18, Central) via the little script right after each, so
+     they can't go stale on screen. That is client-side only: the text stays
+     in the page source until someone deletes it, so remove them after the
+     date (see DECISIONS.eng.md). When reusing: new copy + new data-expires.
+     (Previous weeks: Oct 7 Christian's Tailgate; Oct 21 Fleet Feet Woodway.)
      ============================================================ -->
 <body data-location-banner="on">
   <!-- Google Tag Manager (noscript) -->
@@ -417,21 +446,18 @@
        <body>. Sits first (above the photo banner) because
        showing up at the wrong place is the costliest thing a visitor can
        get wrong. The whole banner links to Google Maps. -->
-  <div id="location-banner" data-expires="2026-10-22T00:00:00-05:00">
-    <a class="wrap location-banner-link" href="https://www.google.com/maps/search/?api=1&amp;query=Fleet%20Feet%20Woodway%206590%20Woodway%20Dr%20Houston%20TX%2077057" target="_blank" rel="noopener" data-cta="location_banner">
-      <strong>📍 This Wed, Oct 21: Fleet Feet Woodway</strong>
-      <span>Early miles 6:30 · Meet up 7:00 · Start 7:30</span>
-      <span>6590 Woodway Dr — not Hermann Park →</span>
+  <div id="location-banner" class="fall" data-expires="2026-11-19T00:00:00-06:00">
+    <a class="wrap location-banner-link" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Kennedy%203210%20W%20Dallas%20St%20Houston%20TX%2077019" target="_blank" rel="noopener" data-cta="location_banner">
+      <strong>🦃 Friendsgiving · This Wed, Nov 18</strong>
+      <span>📍 The Kennedy · not Hermann Park →</span>
+      <span>Wear fall colors 🍂 · Early miles 6:30 · Start 7:30</span>
     </a>
   </div>
   <script>
-    // Self-expiring: a dated banner must never outlive its date (the Oct 7
-    // one stayed up 12 days past it). Hides itself after data-expires.
-    (function () {
-      var b = document.getElementById('location-banner');
-      var t = b && Date.parse(b.getAttribute('data-expires'));
-      if (t && Date.now() > t) b.remove();
-    })();
+    // Self-expiring: a dated element must never outlive its date (the Oct 7
+    // banner stayed up 12 days past it). Hides the element just above this
+    // script after its data-expires. Copy this one-liner after any dated block.
+    (function (s) { var e = s.previousElementSibling, t = e && Date.parse(e.getAttribute('data-expires')); if (t && Date.now() > t) e.remove(); })(document.currentScript);
   </script>
 
   <!-- Permanent "jump to photos" banner — always visible. Mainly for
@@ -469,6 +495,42 @@
     </div>
   </header>
 
+  <!-- ============================================================
+       FRIENDSGIVING — Wed Nov 18, 2026. Dated: hides itself after its
+       data-expires (script right below); delete it from the file after
+       the date. Palette is the flyer's (cream #f8f0d8, burnt orange #c83000).
+       ============================================================ -->
+  <section id="friendsgiving" data-expires="2026-11-19T00:00:00-06:00">
+    <div class="wrap fg-grid">
+      <img class="fg-flyer" src="friendsgiving-2026-flyer.webp" alt="Invitation: A SexyPace Friendsgiving, 11-18-26 at The Kennedy, 3210 W Dallas St, Houston TX 77019. Early miles at 6:30pm, regular miles at 7:30pm." width="900" height="1261" loading="lazy" />
+      <div>
+        <span class="eyebrow">Wednesday, Nov 18</span>
+        <h2>A Sexy Pace Friendsgiving</h2>
+        <p class="fg-tag">Let's celebrate gratitude, laughter, friendship, and community together!</p>
+        <ul class="fg-facts">
+          <li>📍 The Kennedy · 3210 W Dallas St, Houston, TX 77019<small>Not at Hermann Park this week</small></li>
+          <li>🏃 Early miles 6:30PM · Regular miles 7:30PM</li>
+        </ul>
+        <div class="fg-dress">
+          <strong>🍂 Wear fall colors</strong>
+          <div class="fg-swatches">
+            <span class="fg-swatch"><i style="background:#6b4226"></i>Brown</span>
+            <span class="fg-swatch"><i style="background:#7a1f2b"></i>Maroon</span>
+            <span class="fg-swatch"><i style="background:#d9631e"></i>Orange</span>
+            <span class="fg-swatch"><i style="background:#e8b923"></i>Yellow</span>
+          </div>
+        </div>
+        <div class="fg-actions">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Kennedy%203210%20W%20Dallas%20St%20Houston%20TX%2077019" target="_blank" rel="noopener" data-cta="friendsgiving_directions">Get Directions</a>
+          <a class="btn btn-ghost" id="friendsgiving-share-btn" href="sms:?body=Friendsgiving%20with%20Sexy%20Pace%21%20%F0%9F%A6%83%20Wed%20Nov%2018%20at%20The%20Kennedy%20%283210%20W%20Dallas%20St%29%20%E2%80%94%20early%20miles%206%3A30%2C%20run%20at%207%3A30.%20Wear%20fall%20colors%20%F0%9F%8D%82%20Not%20at%20the%20park%20this%20week%21%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Dfriendsgiving_2026%26utm_content%3Dshare_button%23friendsgiving" data-cta="friendsgiving_share">📲 Share With a Friend</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function (s) { var e = s.previousElementSibling, t = e && Date.parse(e.getAttribute('data-expires')); if (t && Date.now() > t) e.remove(); })(document.currentScript);
+  </script>
+
   <script>
     // Reusable share-button wiring: the href is always a working sms:
     // fallback (works with no JS, any browser). Where the Web Share API
@@ -484,6 +546,12 @@
         });
       }
     }
+
+    wireShareButton('friendsgiving-share-btn', {
+      title: 'A Sexy Pace Friendsgiving',
+      text: 'Friendsgiving with Sexy Pace! 🦃 Wed Nov 18 at The Kennedy (3210 W Dallas St) — early miles 6:30, run at 7:30. Wear fall colors 🍂 Not at the park this week!',
+      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=friendsgiving_2026&utm_content=share_button#friendsgiving'
+    });
 
     wireShareButton('hero-share-btn', {
       title: 'Sexy Pace Running Club',
