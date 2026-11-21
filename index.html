@@ -270,53 +270,52 @@
     .photographer-card .btn { margin-top: auto; }
     .photographer-card .btn + .btn { margin-top: 0.6rem; }
 
-    /* "This week's location" banner — hidden unless data-location-banner="on" on <body> */
-    #location-banner { display: none; }
-    body[data-location-banner="on"] #location-banner { display: block; }
-    #location-banner {
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
+    /* Christmas party (Sat Dec 12) — palette from the flyer: deep red + white. All holiday decoration
+       (candy-cane stripes, snow) lives inside these dated blocks so it leaves with them. */
+    #xmas-banner { background: linear-gradient(90deg, #8a1428 0%, #8a1428 55%, #1f5a3a 100%); position: relative; }
+    #xmas-banner::after, #christmas-party::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px;
+      background: repeating-linear-gradient(135deg, #ffffff 0 9px, #c41e3a 9px 18px);
     }
-    .location-banner-link {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.05rem 0.7rem;
-      padding: 0.7rem 1.25rem;
-      color: #1a0510;
-      font-size: 0.92rem;
-      text-decoration: none;
+    #christmas-party::after { bottom: auto; top: 0; height: 7px; }
+    .xmas-banner-link { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.05rem 0.7rem; padding: 0.65rem 1.25rem 0.8rem; color: #fff; font-size: 0.92rem; text-decoration: none; }
+    .xmas-banner-link strong { font-weight: 700; }
+    .xmas-banner-link span { font-weight: 500; opacity: 0.92; }
+    .xmas-banner-link:hover { background: rgba(0,0,0,0.16); }
+    #christmas-party { position: relative; overflow: hidden; background: linear-gradient(160deg, #8a1428 0%, #5a0b1a 100%); color: #fff; padding-top: calc(4.5rem + 7px); }
+    #christmas-party::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.55;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.9) 1.4px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(255,255,255,0.5) 2px, transparent 2.6px);
+      background-size: 130px 130px, 83px 83px, 210px 210px;
+      background-position: 0 0, 31px 47px, 90px 20px;
     }
-    .location-banner-link strong { font-weight: 700; }
-    .location-banner-link span { font-weight: 500; }
-    .location-banner-link:hover { background: #fff; }
-    /* Optional seasonal variant: add class="fall" to #location-banner */
-    #location-banner.fall { background: linear-gradient(90deg, #b52d00, #c8400a); border-bottom-color: #7a1f00; }
-    #location-banner.fall .location-banner-link { color: #fbf3df; }
-    #location-banner.fall .location-banner-link:hover { background: rgba(0,0,0,0.12); }
-
-    /* Friendsgiving (Wed Nov 18) — palette lifted from the flyer: cream + burnt orange */
-    #friendsgiving { background: #f8f0d8; color: #c83000; border-top: 4px solid #c83000; border-bottom: 1px solid #e7d9b4; }
-    .fg-grid { display: grid; gap: 2rem; align-items: center; }
-    @media (min-width: 880px) { .fg-grid { grid-template-columns: 0.8fr 1.2fr; } }
-    .fg-flyer { order: 2; width: 100%; max-width: 440px; margin: 0 auto; border-radius: 18px; border: 1px solid #e0cf9f; box-shadow: 0 10px 30px rgba(120,40,0,0.18); }
-    @media (min-width: 880px) { .fg-flyer { order: 0; } }
-    #friendsgiving .eyebrow { color: #c83000; }
-    #friendsgiving h2 { color: #c83000; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1; }
-    .fg-tag { font-size: 1.12rem; margin: 0.9rem 0 1.2rem; max-width: 46ch; color: #8a2a08; }
-    .fg-facts { list-style: none; margin: 0 0 1.3rem; padding: 0; display: grid; gap: 0.45rem; font-size: 1.02rem; font-weight: 700; }
-    .fg-facts li small { display: block; font-weight: 500; font-size: 0.88rem; opacity: 0.85; }
-    .fg-dress { margin: 0 0 1.5rem; }
-    .fg-dress strong { display: block; margin-bottom: 0.5rem; font-size: 1.02rem; }
-    .fg-swatches { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .fg-swatch { display: inline-flex; align-items: center; gap: 0.45rem; background: #fffaf0; border: 1px solid #e0cf9f; border-radius: 999px; padding: 0.35em 0.85em 0.35em 0.5em; font-size: 0.88rem; font-weight: 700; color: #5a2a10; }
-    .fg-swatch i { width: 1.05rem; height: 1.05rem; border-radius: 50%; border: 1px solid rgba(0,0,0,0.18); display: inline-block; }
-    .fg-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-    #friendsgiving .btn-primary { background: #c83000; color: #fbf3df; }
-    #friendsgiving .btn-primary:hover { background: #a82600; box-shadow: 0 8px 24px rgba(200,48,0,0.3); }
-    #friendsgiving .btn-ghost { color: #c83000; border-color: #c83000; }
-    #friendsgiving .btn-ghost:hover { background: #c83000; color: #fbf3df; }
+    @media (prefers-reduced-motion: no-preference) {
+      #christmas-party::before { animation: snow-drift 40s linear infinite; }
+      @keyframes snow-drift { to { background-position: 40px 130px, 12px 130px, 60px 210px; } }
+    }
+    #christmas-party .wrap { position: relative; z-index: 1; }
+    .xm-grid { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 880px) { .xm-grid { grid-template-columns: 0.8fr 1.2fr; } }
+    .xm-flyer { order: 2; width: 100%; max-width: 440px; margin: 0 auto; border-radius: 18px; border: 3px solid #fff; box-shadow: 0 12px 34px rgba(0,0,0,0.5); }
+    @media (min-width: 880px) { .xm-flyer { order: 0; } }
+    #christmas-party .eyebrow { color: #ffd9de; }
+    #christmas-party h2 { color: #fff; font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1; }
+    .xm-sub { font-family: var(--display); text-transform: uppercase; letter-spacing: 3px; color: #ffd9de; font-size: 1.05rem; margin: 0.5rem 0 0; }
+    .xm-tag { font-size: 1.08rem; margin: 0.9rem 0 1.2rem; color: #ffeef0; max-width: 46ch; }
+    .xm-facts { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; gap: 0.45rem; font-size: 1.02rem; font-weight: 700; }
+    .xm-facts li small { display: block; font-weight: 500; font-size: 0.88rem; opacity: 0.85; }
+    .xm-djs { margin: 0 0 1.5rem; }
+    .xm-djs strong { display: block; margin-bottom: 0.5rem; font-size: 1.02rem; }
+    .xm-dj-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .xm-dj { background: #fff; color: #8a1428; border-radius: 999px; padding: 0.35em 0.95em; font-size: 0.9rem; font-weight: 700; }
+    .xm-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    #christmas-party .btn-primary { background: #fff; color: #8a1428; }
+    #christmas-party .btn-primary:hover { background: #ffeef0; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+    #christmas-party .btn-ghost { color: #fff; border-color: #fff; }
+    #christmas-party .btn-ghost:hover { background: #fff; color: #8a1428; }
 
     /* Permanent "jump to photos" banner, always visible under the nav */
     .photos-banner {
@@ -403,23 +402,7 @@
     @media (min-width: 800px) { .sticky-cta { display: none; } }
   </style>
 </head>
-<!-- ============================================================
-     LOCATION BANNER — for a week when the Wednesday run is NOT at the
-     usual spot. Hidden unless its switch below is "on":
-       ON:  data-location-banner="on" (and edit the venue/date/address
-            in <div id="location-banner"> below the nav).
-       OFF: data-location-banner="off" once the week is over — the markup
-            stays in the file, hidden, ready to edit next time.
-     CURRENTLY ON for Wed Nov 18, 2026 (Friendsgiving at The Kennedy, with
-     class="fall" for the seasonal colors). Dated elements (this banner and
-     the #friendsgiving section) hide themselves after their data-expires
-     time (end of Nov 18, Central) via the little script right after each, so
-     they can't go stale on screen. That is client-side only: the text stays
-     in the page source until someone deletes it, so remove them after the
-     date (see DECISIONS.eng.md). When reusing: new copy + new data-expires.
-     (Previous weeks: Oct 7 Christian's Tailgate; Oct 21 Fleet Feet Woodway.)
-     ============================================================ -->
-<body data-location-banner="on">
+<body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7PDQ4V" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
@@ -442,21 +425,15 @@
     </div>
   </nav>
 
-  <!-- THIS WEEK'S LOCATION — hidden unless data-location-banner="on" on
-       <body>. Sits first (above the photo banner) because
-       showing up at the wrong place is the costliest thing a visitor can
-       get wrong. The whole banner links to Google Maps. -->
-  <div id="location-banner" class="fall" data-expires="2026-11-19T00:00:00-06:00">
-    <a class="wrap location-banner-link" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Kennedy%203210%20W%20Dallas%20St%20Houston%20TX%2077019" target="_blank" rel="noopener" data-cta="location_banner">
-      <strong>🦃 Friendsgiving · This Wed, Nov 18</strong>
-      <span>📍 The Kennedy · not Hermann Park →</span>
-      <span>Wear fall colors 🍂 · Early miles 6:30 · Start 7:30</span>
+  <!-- CHRISTMAS PARTY banner, Sat Dec 12. Dated: hides itself after data-expires; delete it from the
+       file afterwards (client-side removal leaves the text in the page source). -->
+  <div id="xmas-banner" data-expires="2026-12-13T00:00:00-06:00">
+    <a class="wrap xmas-banner-link" href="#christmas-party" data-cta="christmas_party_banner">
+      <strong>🎄 This Sat, Dec 12: temporary. Christmas Party</strong>
+      <span>Run · Coffee · Rave · details ↓</span>
     </a>
   </div>
   <script>
-    // Self-expiring: a dated element must never outlive its date (the Oct 7
-    // banner stayed up 12 days past it). Hides the element just above this
-    // script after its data-expires. Copy this one-liner after any dated block.
     (function (s) { var e = s.previousElementSibling, t = e && Date.parse(e.getAttribute('data-expires')); if (t && Date.now() > t) e.remove(); })(document.currentScript);
   </script>
 
@@ -496,33 +473,37 @@
   </header>
 
   <!-- ============================================================
-       FRIENDSGIVING — Wed Nov 18, 2026. Dated: hides itself after its
-       data-expires (script right below); delete it from the file after
-       the date. Palette is the flyer's (cream #f8f0d8, burnt orange #c83000).
+       CHRISTMAS PARTY, Sat Dec 12, 2026, 8AM-12PM, hosted by temporary. (Temporary Coffee,
+       3008 McKinney St) with a 3 mile Sexy Pace run. Dated: hides itself after data-expires;
+       delete it from the file afterwards. Facts are the flyer's only: no cost, RSVP or run
+       start time was given, so none is shown.
        ============================================================ -->
-  <section id="friendsgiving" data-expires="2026-11-19T00:00:00-06:00">
-    <div class="wrap fg-grid">
-      <img class="fg-flyer" src="friendsgiving-2026-flyer.webp" alt="Invitation: A SexyPace Friendsgiving, 11-18-26 at The Kennedy, 3210 W Dallas St, Houston TX 77019. Early miles at 6:30pm, regular miles at 7:30pm." width="900" height="1261" loading="lazy" />
+  <section id="christmas-party" data-expires="2026-12-13T00:00:00-06:00">
+    <div class="wrap xm-grid">
+      <img class="xm-flyer" src="christmas-party-2026-flyer.webp" alt="Flyer: temporary. Christmas Party, 12/12, 8AM to 12PM. Run, coffee, rave. DJ lineup: Laú, Sebas, imax713, Ingrid. Toy drive. 3 mile run with Sexy Pace Run Club. Local vendors. 3008 McKinney St, Houston, TX 77003." width="900" height="1125" loading="lazy" />
       <div>
-        <span class="eyebrow">Wednesday, Nov 18</span>
-        <h2>A Sexy Pace Friendsgiving</h2>
-        <p class="fg-tag">Let's celebrate gratitude, laughter, friendship, and community together!</p>
-        <ul class="fg-facts">
-          <li>📍 The Kennedy · 3210 W Dallas St, Houston, TX 77019<small>Not at Hermann Park this week</small></li>
-          <li>🏃 Early miles 6:30PM · Regular miles 7:30PM</li>
+        <span class="eyebrow">Saturday, Dec 12 · 8AM–12PM</span>
+        <h2>🎄 temporary. Christmas Party</h2>
+        <p class="xm-sub">Run · Coffee · Rave</p>
+        <p class="xm-tag">A 3 mile run with Sexy Pace Run Club, DJs, coffee, local vendors and a toy drive.</p>
+        <ul class="xm-facts">
+          <li>📍 temporary. · 3008 McKinney St, Houston, TX 77003</li>
+          <li>🏃 3 mile run with Sexy Pace Run Club</li>
+          <li>🎁 Toy drive</li>
+          <li>🛍️ Local vendors</li>
         </ul>
-        <div class="fg-dress">
-          <strong>🍂 Wear fall colors</strong>
-          <div class="fg-swatches">
-            <span class="fg-swatch"><i style="background:#6b4226"></i>Brown</span>
-            <span class="fg-swatch"><i style="background:#7a1f2b"></i>Maroon</span>
-            <span class="fg-swatch"><i style="background:#d9631e"></i>Orange</span>
-            <span class="fg-swatch"><i style="background:#e8b923"></i>Yellow</span>
+        <div class="xm-djs">
+          <strong>🎧 DJ lineup</strong>
+          <div class="xm-dj-list">
+            <span class="xm-dj">Laú</span>
+            <span class="xm-dj">Sebas</span>
+            <span class="xm-dj">imax713</span>
+            <span class="xm-dj">Ingrid</span>
           </div>
         </div>
-        <div class="fg-actions">
-          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Kennedy%203210%20W%20Dallas%20St%20Houston%20TX%2077019" target="_blank" rel="noopener" data-cta="friendsgiving_directions">Get Directions</a>
-          <a class="btn btn-ghost" id="friendsgiving-share-btn" href="sms:?body=Friendsgiving%20with%20Sexy%20Pace%21%20%F0%9F%A6%83%20Wed%20Nov%2018%20at%20The%20Kennedy%20%283210%20W%20Dallas%20St%29%20%E2%80%94%20early%20miles%206%3A30%2C%20run%20at%207%3A30.%20Wear%20fall%20colors%20%F0%9F%8D%82%20Not%20at%20the%20park%20this%20week%21%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Dfriendsgiving_2026%26utm_content%3Dshare_button%23friendsgiving" data-cta="friendsgiving_share">📲 Share With a Friend</a>
+        <div class="xm-actions">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Temporary%20Coffee%203008%20McKinney%20St%20Houston%20TX%2077003" target="_blank" rel="noopener" data-cta="christmas_party_directions">Get Directions</a>
+          <a class="btn btn-ghost" id="christmas-party-share-btn" href="sms:?body=Christmas%20party%20with%20Sexy%20Pace%20%2B%20temporary.%21%20%F0%9F%8E%84%20Sat%20Dec%2012%2C%208AM-12PM%20at%203008%20McKinney%20St%3A%203%20mile%20run%2C%20coffee%2C%20DJs%2C%20local%20vendors%20and%20a%20toy%20drive.%20https%3A%2F%2Fsexypacerunningclub.com%2F%3Futm_source%3Dsexypacerunningclub.com%26utm_medium%3Dshare%26utm_campaign%3Dchristmas_party_2026%26utm_content%3Dshare_button%23christmas-party" data-cta="christmas_party_share">📲 Share With a Friend</a>
         </div>
       </div>
     </div>
@@ -547,10 +528,10 @@
       }
     }
 
-    wireShareButton('friendsgiving-share-btn', {
-      title: 'A Sexy Pace Friendsgiving',
-      text: 'Friendsgiving with Sexy Pace! 🦃 Wed Nov 18 at The Kennedy (3210 W Dallas St) — early miles 6:30, run at 7:30. Wear fall colors 🍂 Not at the park this week!',
-      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=friendsgiving_2026&utm_content=share_button#friendsgiving'
+    wireShareButton('christmas-party-share-btn', {
+      title: 'temporary. Christmas Party — Sexy Pace Running Club',
+      text: 'Christmas party with Sexy Pace + temporary.! 🎄 Sat Dec 12, 8AM-12PM at 3008 McKinney St: 3 mile run, coffee, DJs, local vendors and a toy drive.',
+      url: 'https://sexypacerunningclub.com/?utm_source=sexypacerunningclub.com&utm_medium=share&utm_campaign=christmas_party_2026&utm_content=share_button#christmas-party'
     });
 
     wireShareButton('hero-share-btn', {
